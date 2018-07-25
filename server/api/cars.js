@@ -1,11 +1,12 @@
 const router = require('express').Router()
-const {Car} = require('../db/')
-const {User} = require('../db/')
+const {Car} = require('../db/models/')
+const {User} = require('../db/models')
 const asyncHandler = require('express-async-handler');
 
 //gets all cars
 
-router.get('/cars', asyncHandler(async (req, res, next) => {
+router.get('/', asyncHandler(async (req, res, next) => {
+  console.log('here!')
   const allCars = await Car.findAll({});
   res.json(allCars);
 }))
