@@ -14,7 +14,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 //gets car by id
 
-router.get('/cars/:id', asyncHandler(async (req,res,next) => {
+router.get('/:id', asyncHandler(async (req,res,next) => {
   const carId = req.params.id;
   const car = await Car.findAll({where: {id:carId}})
   res.json(car);
@@ -23,14 +23,20 @@ router.get('/cars/:id', asyncHandler(async (req,res,next) => {
 
 //get cars by user Id
 
-router.get('/cart/:userId', asyncHandler(async(req, res, next) => {
-  const carsByUser = User.findAll({
-    include: [{
-      model: Car,
-    }]
-  });
-  res.send(carsByUser);
-}))
+// router.get('/cart/:userId', asyncHandler(async(req, res, next) => {
+//   const userId = req.params.userId
+//   const carsByUser = await User.findAll({
+//     include: [{
+//       model: Car, 
+//       through: {where: {userId : req.param.userId}}, 
+
+//     }]
+//   })
+
+//   res.send(carsByUser);
+// }))
+
+router.post
 
 
 module.exports = router
