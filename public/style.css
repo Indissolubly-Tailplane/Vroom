@@ -19,3 +19,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.homeImage {
+  position: relative;
+  float: center;
+  background-repeat: no-repeat;
+  height: 95%;
+  width: 95%;
+  margin-top: 10px;
+  border-radius: 5%;
+}
