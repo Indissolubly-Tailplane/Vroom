@@ -1,7 +1,7 @@
 const User = require('./user');
 const Car = require('./car');
 
-Car.belongsTo(User, { through: 'cart' });
+Car.belongsToMany(User, { through: 'cart' });
 User.hasMany(Car);
 
 module.exports = {

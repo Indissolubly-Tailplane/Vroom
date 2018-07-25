@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Car = db.define('user', {
+const Car = db.define('car', {
   make: {
     type: Sequelize.STRING,
     allowNull: false,
