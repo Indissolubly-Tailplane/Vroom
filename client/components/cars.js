@@ -4,7 +4,7 @@
 */
 import React, {Component} from 'react'
 
-export default class cars extends Component {
+export default class Cars extends Component {
   constructor() {
     super()
     this.state = {}
