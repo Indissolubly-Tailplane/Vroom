@@ -44,7 +44,7 @@ const newCars = [
     year: '2012'
   },
   {
-    make: 'Lamboghini',
+    make: 'Lamborghini',
     model: 'Huracan',
     color: 'Green',
     price: 300000,
