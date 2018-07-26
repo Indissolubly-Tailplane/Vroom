@@ -6,12 +6,15 @@
   - Add to Cart Button
  */
 
-import React from 'react'
+import React, {Component} from 'react';
+import {conenct} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 /**
  * COMPONENT
  */
-export const SingleCar = () => {
+export const SingleCar = (props) => {
+  const {make, model, id} = props.car;
   return (
     <div class="ui card">
       <img
@@ -19,15 +22,19 @@ export const SingleCar = () => {
         class="ui image"
       />
       <div class="content">
-        <div class="header">Lambo</div>
-        <div class="meta">Joined in 2016</div>
-        <div class="description">Daniel is a comedian living in Nashville.</div>
+        <div class="header">{props.make}</div>
+        <div class="meta">{props.model}</div>
       </div>
       <div class="extra content">
-        <a>
-          <i aria-hidden="true" class="user icon" />10 Friends
-        </a>
+        <Link to={`/cars/${props.id}`}>
+          <button>Details</button>
+        </Link>
+        <Link to={`/cart/`}>
+          <button>Add to Cart</button>
+        </Link>
       </div>
     </div>
   )
 }
+
+
