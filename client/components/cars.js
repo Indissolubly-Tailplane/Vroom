@@ -9,47 +9,31 @@ import { connect } from 'react-redux';
 
 class Cars extends Component {
   componentDidMount() {
-    console.log("Component did mount.")
     this.props.fetchAllCars();
   }
 
   render() {
     const allCars = this.props.allCars;
-    console.log('PROPS:', this.props)
-    if (!allCars) {
-      return <h1>Loading</h1>
-    }
-
     return (
-        allCars.map((car) => {
+      <div>
+        { !allCars ? <h1>Loading...</h1> :
+          allCars.map((car) => {
           return (
-            <SingleCar car={car}/>
+            <SingleCar key={car.id} car={car}/>
           )
+        })
         }
-      )
+      </div>
     )
-    // return (
-    //   <div>
-    //     { !allCars ? <h1>Loading...</h1> :
-    //       allCars.map((car) => {
-    //       return (
-    //         <SingleCar car={car}/>
-    //       )
-    //     })
-    //     }
-    //   </div>
-    // )
   }
 }
 
 const mapStateToProps = state => {
-  console.log('The state is:', state);
   return { allCars: state.car.allCars }
 }
 
 const mapDispatchToProps = dispatch => ({
   fetchAllCars: () => {
-    console.log('Load Cars ran')
     dispatch(fetchAllCars());
   }
 });
