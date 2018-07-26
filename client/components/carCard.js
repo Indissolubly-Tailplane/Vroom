@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {fetchCar} from '../store/car'
 import {connect} from 'react-redux'
+import {Grid, Image} from 'semantic-ui-react'
 
 class CarCard extends Component {
   componentDidMount() {
@@ -14,19 +15,31 @@ class CarCard extends Component {
     if (!this.props.singleCar) return <div>Loading...</div>
     const singleCar = this.props.singleCar
     return (
-      <div className="CarCard">
-        <img src={singleCar.image} />
-        <div className="content">
-          <div className="header">{singleCar.make}</div>
-          <div className="meta">{singleCar.model}</div>
-          <div>{singleCar.color}</div>
-          <div>{singleCar.price}</div>
-          <div>{singleCar.description}</div>
-          <div>{singleCar.year}</div>
-          {/* add to cart
+      <Grid columns="two" divided>
+        <Grid.Column>
+          <Image
+            src={singleCar.image}
+            size="big"
+            verticalAlign="middle"
+            centered
+          />
+        </Grid.Column>
+        <Grid.Column>
+          <div className="CarCard">
+            <div className="content">
+              <div className="header">
+                {singleCar.make} {singleCar.model}
+              </div>
+              <div>{singleCar.year}</div>
+              {/* <div>{singleCar.color}</div> */}
+              <div>{singleCar.description}</div>
+              <div>Starting at ${singleCar.price}</div>
+              {/* add to cart
           quantity */}
-        </div>
-      </div>
+            </div>
+          </div>
+        </Grid.Column>
+      </Grid>
     )
   }
 }
