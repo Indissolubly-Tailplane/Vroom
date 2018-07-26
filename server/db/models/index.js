@@ -7,7 +7,7 @@ const Car = require('./car')
 Car.belongsToMany(User, {through: 'cart'})
 User.belongsToMany(Car, {through: 'cart'})
 
-// User.getCars()
+// user.getCars()
 
 module.exports = {
   User,
