@@ -27,15 +27,15 @@ class CarCard extends Component {
         <Grid.Column>
           <div className="CarCard">
             <div className="content">
-              <div className="header">
+              <div id="carName">
                 {singleCar.make} {singleCar.model}
               </div>
               <div>{singleCar.year}</div>
               {/* <div>{singleCar.color}</div> */}
               <div>{singleCar.description}</div>
               <div>Starting at ${singleCar.price}</div>
-              {/* add to cart
-          quantity */}
+              <button>Add to Cart</button>
+              {/* quantity */}
             </div>
           </div>
         </Grid.Column>
