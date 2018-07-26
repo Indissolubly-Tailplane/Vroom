@@ -1,20 +1,12 @@
-/* We need...
-  - Navbar
-  - Image
-  - Info
-  - Quantity (drop down form)
-  - Add to Cart Button
- */
-
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
  */
-export const SingleCar = (props) => {
-  const {make, model, id, image} = props.car;
+export const SingleCar = props => {
+  const {make, model, id, image} = props.car
   return (
     <div className="ui card">
       <img
@@ -36,5 +28,3 @@ export const SingleCar = (props) => {
     </div>
   )
 }
-
-
