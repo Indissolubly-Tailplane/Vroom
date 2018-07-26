@@ -3,16 +3,26 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import { Menu } from 'semantic-ui-react';
+import {Menu} from 'semantic-ui-react'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <React.Fragment>
     <Menu>
-      <Menu.Item><Link to="/">Home</Link></Menu.Item>
-      <Menu.Item><Link to="/cars">Cars</Link></Menu.Item>
-      <Menu.Item><Link to="/signup">Sign Up</Link></Menu.Item>
-      <Menu.Item><Link to="/login">Login</Link></Menu.Item>
-      <Menu.Item><Link to="/cart">Cart</Link></Menu.Item>
+      <Menu.Item>
+        <Link to="/">Home</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/Cars">Cars</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/Signup">Sign Up</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/Login">Login</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/Cart">Cart</Link>
+      </Menu.Item>
     </Menu>
   </React.Fragment>
 )
