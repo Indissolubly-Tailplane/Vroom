@@ -17,27 +17,27 @@ const initialState = {
 /**
  * ACTION CREATORS
  */
-const getAllCars = (allCars) => ({type: GET_ALL_CARS, allCars})
-const getCar = (singleCar) => ({type: GET_CAR, singleCar})
+const getAllCars = allCars => ({type: GET_ALL_CARS, allCars})
+const getCar = singleCar => ({type: GET_CAR, singleCar})
 
 /**
  * THUNK CREATORS
  */
 export const fetchAllCars = () => async dispatch => {
   try {
-    const allCars = await axios.get('/api/cars');
+    const allCars = await axios.get('/api/cars')
     dispatch(getAllCars(allCars.data))
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
-export const fetchCar = (id) => async dispatch => {
+export const fetchCar = id => async dispatch => {
   try {
     const car = await axios.get(`/api/cars/${id}`)
-    dispatch(getCar(car.data));
+    dispatch(getCar(car.data))
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 }
 
