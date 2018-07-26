@@ -12,18 +12,19 @@ import React from 'react'
 /**
  * COMPONENT
  */
-export const SingleCarCart = () => {
+export const SingleCarCart = (props) => {
+  const { make, model , color, price, year , description , image} = props.car;
   return (
     <div className="ui card">
       <img
-        src="https://www.torquenews.com/sites/default/files/styles/news/public/image-106/%5Btitle-raw%5D/ferrari_f12_front_square.jpg"
+        src={image}
         className="ui image"
       />
       <div className="content">
-        <div className="header">Make: Ferrari</div>
-        <div className="meta">Model: Ferrari California</div>
-        <div className="meta">Year: 2012</div>
-        <div className="meta">Price: $300,000</div>
+        <div className="header">{make}</div>
+        <div className="meta">{model}</div>
+        <div className="meta">{year}</div>
+        <div className="meta">{price}</div>
       </div>
       <div className="extra content">
         <button>Remove From Cart</button>
