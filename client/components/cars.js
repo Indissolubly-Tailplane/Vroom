@@ -3,6 +3,7 @@
   - carCard components
 */
 import React, {Component} from 'react'
+import {SingleCar} from './SingleCar'
 
 export default class Cars extends Component {
   constructor() {
@@ -11,6 +12,10 @@ export default class Cars extends Component {
   }
 
   render() {
-    return <h1>All Cars</h1>
+    return (
+      <div>
+        <SingleCar />
+      </div>
+    )
   }
 }
