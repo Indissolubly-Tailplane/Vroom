@@ -13,19 +13,27 @@ import React from 'react'
  */
 export const SingleCar = () => {
   return (
-    <div class="ui card">
+    <div className="ui card">
       <img
-        src="https://icdn2.digitaltrends.com/image/2018-lamborghini-huracan-performante-23-1200x675.jpg?ver=1"
-        class="ui image"
+        src="https://www.torquenews.com/sites/default/files/styles/news/public/image-106/%5Btitle-raw%5D/ferrari_f12_front_square.jpg"
+        className="ui image"
       />
-      <div class="content">
-        <div class="header">Lambo</div>
-        <div class="meta">Joined in 2016</div>
-        <div class="description">Daniel is a comedian living in Nashville.</div>
+      <div className="content">
+        <div className="header">Make: Ferrari</div>
+        <div className="meta">Model: Ferrari California</div>
+        <div className="meta">Year: 2012</div>
+        <div className="description">
+          Penned by the Ferrari style centre in collaboration with Pininfarina,
+          the new California T is a sophisticated prancing horse grand tourer
+          with a beautifully ergonomic and sumptuously handcrafted. The
+          re-innovated California T is a car worthy of any automobile aficionado
+          or a discerning client seeking a majestically comfortable daily drive.
+        </div>
+        <div className="meta">Price: $300,000</div>
       </div>
-      <div class="extra content">
+      <div className="extra content">
         <a>
-          <i aria-hidden="true" class="user icon" />10 Friends
+          <i aria-hidden="true" className="user icon" />More Info
         </a>
       </div>
     </div>
