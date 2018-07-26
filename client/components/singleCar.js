@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 export const SingleCar = props => {
   const {make, model, id, image} = props.car
   return (
-    <div className="ui card">
+    <div className="card">
       <img src={image} className="ui image" />
       <div className="content">
         <div className="header">{make}</div>
