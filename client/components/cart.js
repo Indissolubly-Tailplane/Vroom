@@ -46,7 +46,8 @@ export default class Cart extends Component {
         <div>
           <h1>Cart</h1>
         </div>
-      {Object.values(window.localStorage).map((item, idx) =>   <SingleCarCart key = {idx} car = {JSON.parse(item)} carKeyInlocalStorage= {item}/>)}
+      {/* {Object.values(window.localStorage).map((item, idx) =>   <SingleCarCart key = {idx} car = {JSON.parse(item)} carKeyInlocalStorage= {item}/>)} */}
+      {Object.entries(window.localStorage).map((item,idx)=> <SingleCarCart key={idx} car={JSON.parse(item[1])} carKeyInlocalStorage={item[0]} />)}
 
         <div>
           <h1>Total Price: {}</h1>
