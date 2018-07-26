@@ -44,7 +44,7 @@ class Cars extends Component {
 
 const mapStateToProps = state => {
   console.log('The state is:', state);
-  return { allCars: state.allCars }
+  return { allCars: state.car.allCars }
 }
 
 const mapDispatchToProps = dispatch => ({

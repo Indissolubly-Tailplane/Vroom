@@ -50,6 +50,7 @@ export const fetchCar = (id) => async dispatch => {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_CARS:
+    console.log('GET ALL CARS IN REDUCER RAN');
       return {
         ...state,
         allCars: action.allCars
