@@ -18,8 +18,8 @@ const initialState = {
 /**
  * ACTION CREATORS
  */
-const getAllCars = user => ({type: GET_ALL_CARS, allCars})
-const getCar = () => ({type: GET_CAR, singleCar})
+const getAllCars = (allCars) => ({type: GET_ALL_CARS, allCars})
+const getCar = (singleCar) => ({type: GET_CAR, singleCar})
 
 /**
  * THUNK CREATORS
@@ -28,6 +28,7 @@ export const fetchAllCars = () => async dispatch => {
   console.log('Fetched all cars');
   try {
     const allCars = await axios.get('/api/cars');
+    console.log('All Cars:', allCars)
     dispatch(getAllCars(allCars.data))
   } catch (err) {
     console.log(err);

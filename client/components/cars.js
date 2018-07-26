@@ -16,15 +16,29 @@ class Cars extends Component {
   render() {
     const allCars = this.props.allCars;
     console.log('PROPS:', this.props)
+    if (!allCars) {
+      return <h1>Loading</h1>
+    }
+
     return (
-      <div>
-        {allCars.map((car) => {
+        allCars.map((car) => {
           return (
             <SingleCar car={car}/>
           )
-        })}
-      </div>
+        }
+      )
     )
+    // return (
+    //   <div>
+    //     { !allCars ? <h1>Loading...</h1> :
+    //       allCars.map((car) => {
+    //       return (
+    //         <SingleCar car={car}/>
+    //       )
+    //     })
+    //     }
+    //   </div>
+    // )
   }
 }
 
