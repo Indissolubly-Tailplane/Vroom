@@ -18,7 +18,7 @@ class CarCard extends Component {
   //handle change -> handling quantity change
 
   render() {
-    console.log('THIS.PROPS', this.props)
+    console.log('THIS.PROPS.SINGLECAR', this.props.singleCar)
     const {
       make,
       model,
@@ -52,26 +52,16 @@ const mapStateToProps = (state, ownProps) => {
   // console.log('state', state)
   // console.log('state.car.singleCar.id', state.car.singleCar.id)
   // console.log('ownProps.match.params.id', ownProps.match.params.id)
-  if (Number(state.car.singleCar.id) === Number(ownProps.match.params.id)) {
-    return {singleCar: state.car.singleCar}
-  }
+  // if (Number(state.car.singleCar.id) === Number(ownProps.match.params.id)) {
+  //   return {singleCar: state.car.singleCar[0]}
+  // }
+  console.log('STATE.CAR.SINGLECAR', state.car.singleCar)
+  return {singleCar: state.car.singleCar[0]}
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadOneCar: () => {
     dispatch(fetchCar(ownProps.match.params.id))
   }
 })
-
-// export const CarCard = props => {
-//   return (
-//     <div>
-//       <h1>Home</h1>
-//       <img
-//         className="homeImage"
-//         src="https://assets.bugatti.com/fileadmin/_processed_/sei/p54/se-image-cb3ed39a6d61cdec3337bc041cc38689.jpg"
-//       />
-//     </div>
-//   )
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarCard)
