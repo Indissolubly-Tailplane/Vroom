@@ -4,16 +4,18 @@
 */
 import React, {Component} from 'react';
 import {SingleCar} from './SingleCar';
-import {fetchCars} from '../store/car';
+import {fetchAllCars} from '../store/car';
 import { connect } from 'react-redux';
 
 class Cars extends Component {
   componentDidMount() {
-    this.props.loadCars()
+    console.log("Component did mount.")
+    this.props.fetchAllCars();
   }
 
   render() {
     const allCars = this.props.allCars;
+    console.log('PROPS:', this.props)
     return (
       <div>
         {allCars.map((car) => {
@@ -27,13 +29,14 @@ class Cars extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  console.log('The state is:', state);
   return { allCars: state.allCars }
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadCars() {
-    dispatch(fetchCars());
+  fetchAllCars: () => {
+    console.log('Load Cars ran')
+    dispatch(fetchAllCars());
   }
 });
 
