@@ -21,6 +21,10 @@ export default class Cart extends Component {
 
 
   render() {
+
+
+    // add car to cart
+     
     window.localStorage.clear(); 
     window.localStorage.setItem(`item${window.localStorage.length + 1}`, JSON.stringify(
         {
@@ -37,15 +41,12 @@ export default class Cart extends Component {
           updatedAt: '2018-07-25T21:22:50.098Z'
         }
       ))
-     
 
-    // const carsToBuy = window.localStorage;
-    // console.log(carsToBuy)
     return <center>
         <div>
           <h1>Cart</h1>
         </div>
-      {Object.values(window.localStorage).map((item, idx) =>   <SingleCarCart key = {idx} car = {JSON.parse(item)}/>)}
+      {Object.values(window.localStorage).map((item, idx) =>   <SingleCarCart key = {idx} car = {JSON.parse(item)} carKeyInlocalStorage= {item}/>)}
 
         <div>
           <h1>Total Price: {}</h1>

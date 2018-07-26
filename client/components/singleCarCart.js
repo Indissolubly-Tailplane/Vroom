@@ -27,7 +27,7 @@ export const SingleCarCart = (props) => {
         <div className="meta">{price}</div>
       </div>
       <div className="extra content">
-        <button>Remove From Cart</button>
+        <button onClick = {this.handleRemove}>Remove From Cart</button>
       </div>
     </div>
   )
