@@ -68,3 +68,7 @@ form div {
   display: inline-block;
   font-size: 16px;
 }
+
+.loginForm {
+  margin-top: 50px;
+}
