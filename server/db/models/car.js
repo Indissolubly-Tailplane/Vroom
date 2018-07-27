@@ -1,36 +1,40 @@
-const crypto = require('crypto');
-const Sequelize = require('sequelize');
-const db = require('../db');
+const crypto = require('crypto')
+const Sequelize = require('sequelize')
+const db = require('../db')
 
 const Car = db.define('car', {
   make: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
   model: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
   color: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
   price: {
     type: Sequelize.FLOAT,
-    allowNull: false,
+    allowNull: false
+  },
+  quantity: {
+    type: Sequelize.FLOAT,
+    defaultValue: 0
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: false,
+    allowNull: false
   },
   image: {
     type: Sequelize.STRING,
-    defaultValue: 'https://i.ytimg.com/vi/UKKIUoNsG08/maxresdefault.jpg',
+    defaultValue: 'https://i.ytimg.com/vi/UKKIUoNsG08/maxresdefault.jpg'
   },
   year: {
     type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-});
+    allowNull: false
+  }
+})
 
-module.exports = Car;
+module.exports = Car
