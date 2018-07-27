@@ -34,6 +34,7 @@ class CarCard extends Component {
               {/* <div>{singleCar.color}</div> */}
               <div id="carDescription">{singleCar.description}</div>
               <div id="carPrice">Starting at ${singleCar.price}</div>
+              <div id="carQuantity">{singleCar.quantity} Left In Stock!</div>
               <button id="carButton">Add to Cart</button>
               {/* quantity */}
             </div>
