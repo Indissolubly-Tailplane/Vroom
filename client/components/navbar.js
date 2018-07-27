@@ -25,7 +25,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </Menu.Item>
         ) : (
           <Menu.Item>
-          <Link to="/Logout">Logout</Link>
+          <a onClick={handleClick}>Logout</a>
+          {/* <Link to="/Login">Logout</Link> */}
         </Menu.Item>
         )
       }
@@ -37,36 +38,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   </React.Fragment>
 )
 
-// const Navbar = ({handleClick, isLoggedIn}) => (
-//   <div>
-//     <h1>VROOM</h1>
-//     <nav>
-//       <a href="/">Home</a>
-//       <a href="/cars">Cars</a>
-//       <a href="/cart">Cart</a>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-// )
-
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id
