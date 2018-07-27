@@ -9,7 +9,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
-        <Link to="/">Home</Link>
+        <Link to="/"><i class="home icon"></i></Link>
       </Menu.Item>
       <Menu.Item>
         <Link to="/Cars">Cars</Link>
@@ -18,11 +18,19 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <Menu.Item>
         <Link to="/Signup">Sign Up</Link>
       </Menu.Item>
+      {
+        !isLoggedIn ? (
+        <Menu.Item>
+          <Link to="/Login">Login</Link>
+        </Menu.Item>
+        ) : (
+          <Menu.Item>
+          <Link to="/Logout">Logout</Link>
+        </Menu.Item>
+        )
+      }
       <Menu.Item>
-        <Link to="/Login">Login</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/Cart">Cart</Link>
+        <Link to="/Cart"><i class="shopping cart icon"></i></Link>
       </Menu.Item>
       </div>
     </Menu>
