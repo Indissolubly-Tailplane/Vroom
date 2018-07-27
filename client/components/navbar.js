@@ -9,30 +9,33 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
-        <Link to="/"><i class="home icon"></i></Link>
+        <Link to="/">
+          <i class="home icon" />
+        </Link>
       </Menu.Item>
       <Menu.Item>
         <Link to="/Cars">Cars</Link>
       </Menu.Item>
       <div className="right menu">
-      <Menu.Item>
-        <Link to="/Signup">Sign Up</Link>
-      </Menu.Item>
-      {
-        !isLoggedIn ? (
         <Menu.Item>
-          <Link to="/Login">Login</Link>
+          <Link to="/Signup">Sign Up</Link>
         </Menu.Item>
+        {!isLoggedIn ? (
+          <Menu.Item>
+            <Link to="/Login">Login</Link>
+          </Menu.Item>
         ) : (
           <Menu.Item>
-          <a onClick={handleClick}>Logout</a>
-          {/* <Link to="/Login">Logout</Link> */}
+            <a onClick={handleClick}>Logout</a>
+            {/* <Link to="/Login">Logout</Link> */}
+          </Menu.Item>
+        )}
+        <Menu.Item>
+          <Link to="/Cart">
+            <i className="shopping cart icon" />
+            <span className="button__badge">{window.localStorage.length}</span>
+          </Link>
         </Menu.Item>
-        )
-      }
-      <Menu.Item>
-        <Link to="/Cart"><i className="shopping cart icon"/></Link>
-      </Menu.Item>
       </div>
     </Menu>
   </React.Fragment>

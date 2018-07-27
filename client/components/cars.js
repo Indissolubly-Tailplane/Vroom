@@ -15,7 +15,7 @@ class Cars extends Component {
   render() {
     const allCars = this.props.allCars
     return (
-      <div className="ui three stackable cards" >
+      <div className="ui four stackable cards">
         {!allCars ? (
           <h1>Loading...</h1>
         ) : (

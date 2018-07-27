@@ -57,6 +57,12 @@ form div {
   font-family: sans-serif;
 }
 
+#carQuantity {
+  padding: 3%;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
 #carButton {
   font-family: sans-serif;
   background-color: black; /* Green */
