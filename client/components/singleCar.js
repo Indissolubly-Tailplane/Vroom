@@ -7,16 +7,24 @@ import {Image} from 'semantic-ui-react'
  * COMPONENT
  */
 export const SingleCar = props => {
-  const {make, model, id, image} = props.car;
-  
-  const addToCar = () => { 
-    window.localStorage.setItem(`item${window.localStorage.length + 1}`, JSON.stringify(props.car)) 
-  }
+  const {make, model, id, image} = props.car
 
+  const addToCar = () => {
+    window.localStorage.setItem(
+      `item${window.localStorage.length + 1}`,
+      JSON.stringify(props.car)
+    )
+  }
 
   return (
     <div className="card">
-      <Image height="70%" width="100%" position="absoulte" src={image} className="ui image" />
+      <Image
+        height="70%"
+        width="100%"
+        position="absoulte"
+        src={image}
+        className="ui image"
+      />
       <div className="content">
         <div className="header">{make}</div>
         <div className="meta">{model}</div>
@@ -25,7 +33,7 @@ export const SingleCar = props => {
         <Link to={`/cars/${id}`}>
           <button>Details</button>
         </Link>
-          <button onClick = {addToCar}>Add to Cart</button>
+        <button onClick={addToCar}>Add to Cart</button>
       </div>
     </div>
   )

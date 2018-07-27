@@ -4,13 +4,14 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Menu} from 'semantic-ui-react'
+import CartNumber from './cartNumber'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
         <Link to="/">
-          <i class="home icon" />
+          <i className="home icon" />
         </Link>
       </Menu.Item>
       <Menu.Item>
@@ -33,7 +34,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <Menu.Item>
           <Link to="/Cart">
             <i className="shopping cart icon" />
-            <span className="button__badge">{window.localStorage.length}</span>
+            {/* <span className="button__badge">{window.localStorage.length}</span> */}
+            <CartNumber />
           </Link>
         </Menu.Item>
       </div>
