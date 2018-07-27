@@ -103,6 +103,30 @@ const newCars = [
     image:
       'https://cdn.images.express.co.uk/img/dynamic/24/590x/Tesla-Roadster-902249.jpg',
     year: '2018'
+  },
+  {
+    make: 'Koenigsegg',
+    model: 'Agera',
+    color: 'Blue',
+    price: 2100000,
+    quantity: 20,
+    description:
+      'The new Koenigsegg Agera RS has its focus set firmly on the track but is still perfect for regular use on the road. It uses advanced technology developed during our exclusive Koenigsegg One:1 program, while maintaining all the functionality of previous S and R models. Such practicalities include a usable luggage compartment and a detachable hardtop that can be stowed internally for top-down motoring at any time.',
+    image:
+      'http://alliswall.com/file/4814/1920x1200/16:9/koenigsegg-agera-r-.jpg',
+    year: '2018'
+  },
+  {
+    make: 'Pagani',
+    model: 'Zonda HP',
+    color: 'Blue',
+    price: 17500000,
+    quantity: 20,
+    description:
+      'The Zonda HP Barchetta, first seen last year, boasts a 6.0-litre biturbo V12 on board with 789bhp, the same power output of the wild Huayra BC. It’s matched to a six-speed manual gearbox, along with a mechanical locking diff and rear-wheel-drive.',
+    image:
+      'https://s1.cdn.autoevolution.com/images/news/gallery/pagani-zonda-revolution-sets-nurburgring-record-for-track-cars-heres-what-the-630-time-means_4.jpeg',
+    year: '2019'
   }
 ]
 
