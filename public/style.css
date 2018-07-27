@@ -78,3 +78,11 @@ form div {
 .loginForm {
   margin-top: 50px;
 }
+
+.StripeElement {
+  width: 70%;
+  float: right;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
