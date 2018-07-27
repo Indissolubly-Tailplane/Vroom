@@ -29,24 +29,6 @@ export default class Cart extends Component {
         cartItems: this.state.cartItems -1
       })
     }
-    
-    // add car to cart
-     
-    // addToCar = () => {window.localStorage.setItem(`item${window.localStorage.length + 1}`, JSON.stringify(
-    //     {
-    //       id: 2,
-    //       make: 'Buggati',
-    //       model: 'Chiron',
-    //       color: 'Black-Blue',
-    //       price: 3260000,
-    //       description: '=/9pkjfksgjf',
-    //       image:
-    //         'https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/wp-content/uploads/2017/03/2018-Bugatti-Chiron-125.jpg',
-    //       year: 2012,
-    //       createdAt: '2018-07-25T21:22:50.098Z',
-    //       updatedAt: '2018-07-25T21:22:50.098Z'
-    //     }
-    //   ))}
 
     render() {
     if(this.state.cartItems === 0){
