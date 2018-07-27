@@ -30,11 +30,11 @@ class CarCard extends Component {
               <div id="carName">
                 {singleCar.make} {singleCar.model}
               </div>
-              <div>{singleCar.year}</div>
+              <div id="carYear">{singleCar.year}</div>
               {/* <div>{singleCar.color}</div> */}
-              <div>{singleCar.description}</div>
-              <div>Starting at ${singleCar.price}</div>
-              <button>Add to Cart</button>
+              <div id="carDescription">{singleCar.description}</div>
+              <div id="carPrice">Starting at ${singleCar.price}</div>
+              <button id="carButton">Add to Cart</button>
               {/* quantity */}
             </div>
           </div>
