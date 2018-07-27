@@ -14,6 +14,15 @@ import React from 'react'
  */
 export const SingleCarCart = (props) => {
   const { make, model , color, price, year , description , image} = props.car;
+  const handleRemove = (evt) => {
+    console.log('hello from handle!');
+    console.log(props.carKeyInlocalStorage)
+    console.log(window.localStorage);
+    window.localStorage.removeItem(props.carKeyInlocalStorage);
+    console.log( window.localStorage);
+    
+
+  }
   return (
     <div className="ui card">
       <img
@@ -27,7 +36,7 @@ export const SingleCarCart = (props) => {
         <div className="meta">{price}</div>
       </div>
       <div className="extra content">
-        <button onClick = {this.handleRemove}>Remove From Cart</button>
+        <button onClick = {handleRemove}>Remove From Cart</button>
       </div>
     </div>
   )
