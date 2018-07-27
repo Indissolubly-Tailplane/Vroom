@@ -14,11 +14,12 @@ const AuthForm = props => {
     <center>
       <Image
         src="https://wallpaper-house.com/data/out/9/wallpaper2you_300629.jpg"
-        size="big"
+        // size="big"
         verticalAlign="middle"
         centered
+        className="ui fluid image"
       />
-      <div>
+      <div className="loginForm">
         <form onSubmit={handleSubmit} name={name}>
           <div className="ui form segment">
             <div className="field">
