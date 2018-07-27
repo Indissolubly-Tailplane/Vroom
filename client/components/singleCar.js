@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {Image} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -9,7 +10,7 @@ export const SingleCar = props => {
   const {make, model, id, image} = props.car
   return (
     <div className="card">
-      <img src={image} className="ui image" />
+      <Image height="70%" width="100%" position="absoulte" src={image} className="ui image" />
       <div className="content">
         <div className="header">{make}</div>
         <div className="meta">{model}</div>
