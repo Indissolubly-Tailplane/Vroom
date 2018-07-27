@@ -9,7 +9,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
-        <Link to="/">Home</Link>
+        <Link to="/"><i class="home icon"></i></Link>
       </Menu.Item>
       <Menu.Item>
         <Link to="/Cars">Cars</Link>
@@ -18,47 +18,26 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <Menu.Item>
         <Link to="/Signup">Sign Up</Link>
       </Menu.Item>
+      {
+        !isLoggedIn ? (
+        <Menu.Item>
+          <Link to="/Login">Login</Link>
+        </Menu.Item>
+        ) : (
+          <Menu.Item>
+          <a onClick={handleClick}>Logout</a>
+          {/* <Link to="/Login">Logout</Link> */}
+        </Menu.Item>
+        )
+      }
       <Menu.Item>
-        <Link to="/Login">Login</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/Cart">Cart</Link>
+        <Link to="/Cart"><i className="shopping cart icon"/></Link>
       </Menu.Item>
       </div>
     </Menu>
   </React.Fragment>
 )
 
-// const Navbar = ({handleClick, isLoggedIn}) => (
-//   <div>
-//     <h1>VROOM</h1>
-//     <nav>
-//       <a href="/">Home</a>
-//       <a href="/cars">Cars</a>
-//       <a href="/cart">Cart</a>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//     </nav>
-//     <hr />
-//   </div>
-// )
-
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id
