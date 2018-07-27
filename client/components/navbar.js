@@ -31,7 +31,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         )
       }
       <Menu.Item>
-        <Link to="/Cart"><i class="shopping cart icon"></i></Link>
+        <Link to="/Cart"><i className="shopping cart icon"/></Link>
       </Menu.Item>
       </div>
     </Menu>
