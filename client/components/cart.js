@@ -38,14 +38,16 @@ export default class Cart extends Component {
           <div>
             <h1>Cart</h1>
           </div>
-          {Object.entries(window.localStorage).map((item, idx) => (
-            <SingleCarCart
-              key={idx}
-              car={JSON.parse(item[1])}
-              carKeyInlocalStorage={item[0]}
-              handleRemove={this.handleRemoveInCart}
-            />
-          ))}
+          <div className="ui three stackable cards">
+            {Object.entries(window.localStorage).map((item, idx) => (
+              <SingleCarCart
+                key={idx}
+                car={JSON.parse(item[1])}
+                carKeyInlocalStorage={item[0]}
+                handleRemove={this.handleRemoveInCart}
+              />
+            ))}
+          </div>
           <div>
             <h1>Total Price: {}</h1>
             <button>Checkout</button>

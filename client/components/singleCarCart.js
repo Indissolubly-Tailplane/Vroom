@@ -1,5 +1,5 @@
 /* We need...
-  - Car name  
+  - Car name
   - Image
   - Info
   - Quantity
@@ -8,29 +8,33 @@
 */
 
 import React, {Component} from 'react'
-import propTypes from 'prop-types'  // typeCheck incomming props (raect error handling)
+import propTypes from 'prop-types' // typeCheck incomming props (raect error handling)
 import Cart from './Cart'
+import {Image} from 'semantic-ui-react'
 
 /**
  * COMPONENT
  */
 export default class SingleCarCart extends Component {
-  constructor () {
-    super ()
-    this.state = {
-    }
+  constructor() {
+    super()
+    this.state = {}
   }
-    
-    handleRemove = (evt) => {
-      window.localStorage.removeItem(this.props.carKeyInlocalStorage);
-      this.props.handleRemove()
-    }
-    
+
+  handleRemove = evt => {
+    window.localStorage.removeItem(this.props.carKeyInlocalStorage)
+    this.props.handleRemove()
+  }
+
   render() {
-    const { make, model , color, price, year , description , image} = this.props.car;
+    const {make, model, color, price, year, description, image} = this.props.car
     return (
-      <div className="ui card">
-        <img
+      <div className="card">
+        <Image
+          src={image}
+          height="70%"
+          width="100%"
+          position="absolute"
           src={image}
           className="ui image"
         />
@@ -39,9 +43,9 @@ export default class SingleCarCart extends Component {
           <div className="meta">{model}</div>
           <div className="meta">{year}</div>
           <div className="meta">{price}</div>
-        </div>
-        <div className="extra content">
-          <button onClick={this.handleRemove}>Remove From Cart</button>
+          <div className="extra content">
+            <button onClick={this.handleRemove}>Remove From Cart</button>
+          </div>
         </div>
       </div>
     )

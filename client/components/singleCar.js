@@ -21,7 +21,7 @@ export const SingleCar = props => {
       <Image
         height="70%"
         width="100%"
-        position="absoulte"
+        position="absolute"
         src={image}
         className="ui image"
       />
