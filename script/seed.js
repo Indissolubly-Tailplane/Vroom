@@ -37,6 +37,7 @@ const newCars = [
     model: 'California',
     color: 'Red',
     price: 200000,
+    quantity: 20,
     description:
       'Penned by the Ferrari style centre in collaboration with Pininfarina, the new California T is a sophisticated prancing horse grand tourer with a beautifully ergonomic and sumptuously handcrafted. The re-innovated California T is a car worthy of any automobile aficionado or a discerning client seeking a majestically comfortable daily drive.',
     image:
@@ -48,6 +49,7 @@ const newCars = [
     model: 'Huracan',
     color: 'Green',
     price: 300000,
+    quantity: 20,
     description:
       ' Your heart will leap when you sit inside and press the ignition button, feeling what it means to have a naturally aspirated V10 engine behind you, and all the technology you need to control it right at your fingertips. Your eyes will enthrall you a final time once you take in the full-LED lighting system and the 12.3" TFT instrument panel, which provides an unrivalled driving experience.',
     image:
@@ -59,6 +61,7 @@ const newCars = [
     model: 'Arrow',
     color: 'Orange',
     price: 1100000,
+    quantity: 20,
     description:
       'As an all-electric supercar, Roadster maximizes the potential of aerodynamic engineering—with record-setting performance and efficiency.',
     image:
@@ -70,6 +73,7 @@ const newCars = [
     model: 'Chiron',
     color: 'Black-Blue',
     price: 3260000,
+    quantity: 20,
     description:
       'The Chiron Sport has become perceptibly more nimble and its new agility, especially in tight corners makes for a much more emotional experience for the driver on winding roads and handling circuits. Bugatti put the Chiron on a weight loss regime. This includes lightweight wheel and the use of carbon fiber in areas such as the stabilizer, windshield wiper, and intercooler cover.',
     image:
@@ -81,6 +85,7 @@ const newCars = [
     model: '720S',
     color: 'Orange',
     price: 600000,
+    quantity: 20,
     description:
       'The McLaren 720S embodies our relentless quest to push the limits of possibility. Lighter, stronger, faster. It’s all of these and more. But how it makes you feel is altogether something else. Prepare to push the limits of what you thought possible in a supercar.',
     image:
@@ -92,6 +97,7 @@ const newCars = [
     model: 'Roadster',
     color: 'Red',
     price: 250000,
+    quantity: 20,
     description:
       'As an all-electric supercar, Roadster maximizes the potential of aerodynamic engineering—with record-setting performance and efficiency.',
     image:
