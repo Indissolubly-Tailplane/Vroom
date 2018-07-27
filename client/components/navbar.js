@@ -14,6 +14,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <Menu.Item>
         <Link to="/Cars">Cars</Link>
       </Menu.Item>
+      <div className="right menu">
       <Menu.Item>
         <Link to="/Signup">Sign Up</Link>
       </Menu.Item>
@@ -23,6 +24,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <Menu.Item>
         <Link to="/Cart">Cart</Link>
       </Menu.Item>
+      </div>
     </Menu>
   </React.Fragment>
 )

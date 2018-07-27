@@ -15,7 +15,7 @@ class Cars extends Component {
   render() {
     const allCars = this.props.allCars
     return (
-      <div className="ui three stackable cards">
+      <div className="ui three stackable cards" >
         {!allCars ? (
           <h1>Loading...</h1>
         ) : (
@@ -39,4 +39,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cars)
-  
