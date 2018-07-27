@@ -1,5 +1,5 @@
 /* We need...
-  - Car name
+  - Car name  
   - Image
   - Info
   - Quantity
@@ -7,37 +7,50 @@
   - Remove
 */
 
-import React from 'react'
+import React, {Component} from 'react'
+import propTypes from 'prop-types'  // typeCheck incomming props (raect error handling)
+import Cart from './Cart'
 
 /**
  * COMPONENT
  */
-export const SingleCarCart = (props) => {
-  const { make, model , color, price, year , description , image} = props.car;
-  const handleRemove = (evt) => {
-    console.log('hello from handle!');
-    console.log(props.carKeyInlocalStorage)
-    console.log(window.localStorage);
-    window.localStorage.removeItem(props.carKeyInlocalStorage);
-    console.log( window.localStorage);
-    
-
+export default class SingleCarCart extends Component {
+  constructor () {
+    super ()
+    this.state = {
+    }
   }
-  return (
-    <div className="ui card">
-      <img
-        src={image}
-        className="ui image"
-      />
-      <div className="content">
-        <div className="header">{make}</div>
-        <div className="meta">{model}</div>
-        <div className="meta">{year}</div>
-        <div className="meta">{price}</div>
+    
+    handleRemove = (evt) => {
+     
+      window.localStorage.removeItem(this.props.carKeyInlocalStorage);
+     
+      this.props.handleRemove()
+    }
+    
+  render() {
+    const { make, model , color, price, year , description , image} = this.props.car;
+    return (
+      <div className="ui card">
+        <img
+          src={image}
+          className="ui image"
+        />
+        <div className="content">
+          <div className="header">{make}</div>
+          <div className="meta">{model}</div>
+          <div className="meta">{year}</div>
+          <div className="meta">{price}</div>
+        </div>
+        <div className="extra content">
+          <button onClick={this.handleRemove}>Remove From Cart</button>
+        </div>
       </div>
-      <div className="extra content">
-        <button onClick = {handleRemove}>Remove From Cart</button>
-      </div>
-    </div>
-  )
+    )
+  }
+}
+
+SingleCarCart.propTypes = {
+  car: propTypes.object.isRequired,
+  carKeyInlocalStorage: propTypes.string.isRequired
 }
