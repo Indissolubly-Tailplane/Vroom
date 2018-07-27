@@ -8,8 +8,12 @@ class CarCard extends Component {
     this.props.loadOneCar()
   }
 
-  //handle add cart function
-  //handle change -> handling quantity change
+  addToCar = () => {
+    window.localStorage.setItem(
+      `item${window.localStorage.length + 1}`,
+      JSON.stringify(this.props.singleCar)
+    )
+  }
 
   render() {
     if (!this.props.singleCar) return <div>Loading...</div>
