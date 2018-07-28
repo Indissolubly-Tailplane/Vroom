@@ -127,6 +127,53 @@ const newCars = [
     image:
       'https://s1.cdn.autoevolution.com/images/news/gallery/pagani-zonda-revolution-sets-nurburgring-record-for-track-cars-heres-what-the-630-time-means_4.jpeg',
     year: '2019'
+  },
+  {
+    make: 'Bentley',
+    model: 'Continental GT',
+    color: 'Silver',
+    price: 250000,
+    quantity: 20,
+    description:
+      'With a completely new 6.0 litre, twin-turbocharged W12 engine, a step-change in technology and a truly stunning design language, the new Continental GT is unmatched in its class. This Bentley GT coupé is the quintessential grand tourer – phenomenally powerful, beautifully designed and exquisitely crafted.',
+    image:
+      'https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/17q1/674191/2017-bentley-continental-supersports-revealed-news-car-and-driver-photo-674309-s-original.jpg',
+    year: '2018'
+  },
+  {
+    make: 'Audi',
+    model: 'R8-V10',
+    color: 'Blue',
+    price: 250000,
+    quantity: 20,
+    description:
+      'With a completely new 6.0 litre, twin-turbocharged W12 engine, a step-change in technology and a truly stunning design language, the new Continental GT is unmatched in its class. This Bentley GT coupé is the quintessential grand tourer – phenomenally powerful, beautifully designed and exquisitely crafted.',
+    image:
+      'https://st.motortrend.com/uploads/sites/10/2015/09/2017-Audi-R8-V10-Plus-front-three-quarter-in-motion-02.jpg',
+    year: '2018'
+  },
+  {
+    make: 'Rolls-Royce',
+    model: 'Phantom',
+    color: 'White',
+    price: 500000,
+    quantity: 20,
+    description:
+      'An unmistakable aura. A presence that defies time itself. Phantom is the signature Rolls-Royce; an iconic and enduring interpretation of the modern motor car.In a world where unique is rarely experienced, Phantom is unmatched. Unrivalled. One of one.',
+    image: 'http://paperlief.com/images/rolls-royce-wallpaper-4.jpg',
+    year: '2019'
+  },
+  {
+    make: 'Merceds',
+    model: 'G-Wagon',
+    color: 'Yellow',
+    price: 500000,
+    quantity: 20,
+    description:
+      'Created to conquer challenges on six continents, the 38-year evolution of the G-Class keeps elevating the pinnacle of refinement. From its advanced lighting to its classic upright shape, its purposeful elegance is both unmistakable and irrefutable',
+    image:
+      'https://st.motortrend.com/uploads/sites/5/2016/12/Mansory-G_class_Wide-Body-Kit_.jpg',
+    year: '2019'
   }
 ]
 

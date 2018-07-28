@@ -101,6 +101,11 @@ h3 {
   font-family: sans-serif;
 }
 
+#carquantity {
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
 #carPrice {
   padding: 3%;
   font-size: 20px;

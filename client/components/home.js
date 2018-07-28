@@ -42,11 +42,11 @@ const Home = ({isLoggedIn, name}) => {
                 height="100%"
               >
                 <source
-                  src="http://videos-f.jwpsrv.com/content/conversions/B4Bp10CY/videos/vyeEvNlI-3195186.mp4?token=0_5b5cd996_0xf5404bec8aaa22bfa2252844aa7fd2d4a9a8201a"
+                  src="http://content.jwplatform.com/videos/vyeEvNlI-W4hzf1vS.mp4"
                   type="video/mp4"
                 />
                 <source
-                  src="http://videos-f.jwpsrv.com/content/conversions/B4Bp10CY/videos/vyeEvNlI-3195186.mp4?token=0_5b5cd996_0xf5404bec8aaa22bfa2252844aa7fd2d4a9a8201a"
+                  src="http://content.jwplatform.com/videos/vyeEvNlI-W4hzf1vS.mp4"
                   type="video/ogg"
                 />
                 Your browser does not support the video tag.
