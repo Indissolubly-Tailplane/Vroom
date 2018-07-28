@@ -75,6 +75,18 @@ form div {
   font-size: 16px;
 }
 
+#singleCarButton {
+  margin-bottom: 25px;
+  /* text-decoration: none; */
+}
+
+#allCars {
+  /* height: 100%;
+  width: 100%; */
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+
 .loginForm {
   margin-top: 50px;
 }
