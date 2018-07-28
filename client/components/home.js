@@ -29,7 +29,7 @@ const Home = ({isLoggedIn, name}) => {
                 </div>
                 <img
                   src="https://detailedsolutions.ca/wp-content/uploads/2014/10/Supercar-logo-compilation-banner.jpg"
-                  width="100%"
+                  width="75%"
                   height="auto"
                 />
               </div>
