@@ -20,6 +20,16 @@ form div {
   display: inline-block;
 }
 
+.overlay-desc {
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  position: absolute;
+}
+
+.homeContainer {
+  padding-bottom: 0px;
+}
+
 .homeImage {
   position: relative;
   float: center;
@@ -28,6 +38,46 @@ form div {
   width: 100%;
   margin-top: 10px;
   border-radius: 5%;
+}
+
+h3 {
+  font-family: sans-serif;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.stage-button {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 10px;
+  display: inline-block;
+  line-height: 1;
+  color: rgb(24, 115, 201);
+  border: 1px solid;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background-color: #3c3d41;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.homeImageAlternate {
+  position: relative;
+  float: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 #carName {
@@ -85,6 +135,37 @@ form div {
   width: 100%; */
   margin-left: 0.1em;
   margin-right: 0.1em;
+  margin-top: 0.1em;
+}
+
+#cardCardGrid {
+  /* height: 100%;
+  width: 100%; */
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+
+/*
+h1.welcome {
+  font-size: 30px;
+  font-family: sans-serif;
+  color: green;
+  justify-content: center;
+  text-align: center;
+} */
+h2 {
+  color: white;
+  font-family: 'Nobile', sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  padding-top: 25px;
+  padding-left: 30px;
+}
+
+.ui.menu {
+  margin: 0;
+  /* z-index: -1;
+  position: relative; */
 }
 
 .loginForm {
