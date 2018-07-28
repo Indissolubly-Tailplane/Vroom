@@ -4,7 +4,7 @@
   - Total
   - Checkout Button
 */
-import SingleCarCart from './singleCarCart'
+import SingleCarCartRevised from './singleCarCartRevised'
 import {fetchCar} from '../store/car'
 
 import React, {Component} from 'react'
@@ -34,25 +34,27 @@ export default class Cart extends Component {
       return <h1>Cart is empty!</h1>
     } else {
       return (
-        <center>
-          <div>
-            <h1>Cart</h1>
-          </div>
-          <div className="ui three stackable cards">
-            {Object.entries(window.localStorage).map((item, idx) => (
-              <SingleCarCart
-                key={idx}
-                car={JSON.parse(item[1])}
-                carKeyInlocalStorage={item[0]}
-                handleRemove={this.handleRemoveInCart}
-              />
-            ))}
-          </div>
-          <div>
-            <h1>Total Price: {}</h1>
-            <button>Checkout</button>
-          </div>
-        </center>
+        <div>
+          <center>
+            <h4>Cart</h4>
+            <div id="cartContainer">
+              <div className="ui items">
+                {Object.entries(window.localStorage).map((item, idx) => (
+                  <SingleCarCartRevised
+                    key={idx}
+                    car={JSON.parse(item[1])}
+                    carKeyInlocalStorage={item[0]}
+                    handleRemove={this.handleRemoveInCart}
+                  />
+                ))}
+              </div>
+            </div>
+            <div id="checkoutContainer">
+              <h1>Total Price: {}</h1>
+              <button type="button">Checkout</button>
+            </div>
+          </center>
+        </div>
       )
     }
   }

@@ -95,6 +95,32 @@ h3 {
   font-family: sans-serif;
 }
 
+h4 {
+  font-family: sans-serif;
+  padding-top: 10px;
+  font-size: 30px;
+}
+
+#cartContainer {
+  /* padding-top: 30px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: '75%';
+  border-color: black;
+  border-width: 10px;
+}
+
+#checkoutContainer {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: '75%';
+  display: inline-block;
+  text-align: center;
+}
+
 #carDescription {
   padding: 3%;
   font-size: 15px;
@@ -135,12 +161,24 @@ h3 {
   /* text-decoration: none; */
 }
 
+#card {
+  /* background-color: #525252; */
+}
+
+#cartCard {
+  /* background-color: #000000; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #allCars {
   /* height: 100%;
   width: 100%; */
   margin-left: 0.1em;
   margin-right: 0.1em;
   margin-top: 0.1em;
+  /* background-color: #000000; */
 }
 
 #cardCardGrid {
