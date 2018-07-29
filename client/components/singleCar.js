@@ -17,7 +17,7 @@ export const SingleCar = props => {
   }
 
   return (
-    <div className="card">
+    <div className="card" id="card">
       <Image
         height="70%"
         width="100%"

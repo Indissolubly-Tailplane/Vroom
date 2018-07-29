@@ -16,10 +16,13 @@ class CarCard extends Component {
   }
 
   render() {
+    const numberWithCommas = x => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }
     if (!this.props.singleCar) return <div>Loading...</div>
     const singleCar = this.props.singleCar
     return (
-      <Grid columns="two" divided id="cardCardGrid">
+      <Grid columns="two" id="cardCardGrid" divided>
         <Grid.Column>
           <Image
             src={singleCar.image}
@@ -37,7 +40,9 @@ class CarCard extends Component {
               <div id="carYear">{singleCar.year}</div>
               {/* <div>{singleCar.color}</div> */}
               <div id="carDescription">{singleCar.description}</div>
-              <div id="carPrice">Starting at ${singleCar.price}</div>
+              <div id="carPrice">
+                Starting at ${numberWithCommas(singleCar.price)}
+              </div>
               <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
               <button id="carButton">Add to Cart</button>
               {/* quantity */}
