@@ -18,7 +18,6 @@ class Cart extends Component {
     super()
     this.state = {
       cartItems: 0,
-      cartTotal: 0
     }
     this.handleRemoveInCart = this.handleRemoveInCart.bind(this)
   }
@@ -32,9 +31,13 @@ class Cart extends Component {
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
-      totalPrice += cars[i].price
+      totalPrice += cars[i].price;
+      // this.props.updateTotal(totalPrice);
     }
-    this.setState({cartTotal: totalPrice})
+    console.log('TOTAL PRICE:', totalPrice)
+    this.props.updateTotal(totalPrice);
+    console.log('CART TOTAL FROM PROPS:', this.props.cartTotal)
+    // this.setState({cartTotal: totalPrice})
     // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
   }
 
@@ -68,19 +71,19 @@ class Cart extends Component {
                     car={JSON.parse(item[1])}
                     carKeyInlocalStorage={item[0]}
                     handleRemove={this.handleRemoveInCart}
-                    totalPrice={this.state.cartTotal}
+                    totalPrice={this.props.cartTotal}
                   />
                 ))}
               </div>
             </div>
             <div id="checkoutContainer">
-              <h1>Total Price: ${numberWithCommas(this.state.cartTotal)}</h1>
+              {/* <h1>Total Price: ${numberWithCommas(this.props.cartTotal)}</h1> */}
               <Link to={`/confirmation`}>
                 <button className="ui purple button" type="button">
                   Order confirmation
                 </button>
                 </Link>
-              <button onClick={this.props.updateTotal(this.state.cartTotal)}>
+              <button>
               <Link to="/checkout" className="ui blue button">
               Checkout
               </Link>
