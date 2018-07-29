@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Car} = require('../db/models/')
 const {User} = require('../db/models')
 const asyncHandler = require('express-async-handler');
+const stripe = require("stripe")("pk_test_NIADJgaPnph0TGWHkcqwcW7V");
 
 //gets all cars
 
@@ -20,6 +21,17 @@ router.get('/:id', asyncHandler(async (req,res,next) => {
   res.json(car);
 }))
 
+router.post("/charge", async (req, res) => {
+    let {status} = await stripe.charges.create({
+      amount: 2000,
+      currency: "usd",
+      description: "An example charge",
+      source: req.body
+    });
+    // ALSO SEND ORDER INFORMATION TO DB
+    res.json({status});
+});
+
 
 //get cars by user Id
 
@@ -27,8 +39,8 @@ router.get('/:id', asyncHandler(async (req,res,next) => {
 //   const userId = req.params.userId
 //   const carsByUser = await User.findAll({
 //     include: [{
-//       model: Car, 
-//       through: {where: {userId : req.param.userId}}, 
+//       model: Car,
+//       through: {where: {userId : req.param.userId}},
 
 //     }]
 //   })

@@ -10,6 +10,7 @@ import cart from './components/cart'
 import {SingleCar} from './components/SingleCar'
 import CarCard from './components/CarCard'
 import Confirmation from './components/confirmation'
+import Checkout from './components/Checkout';
 
 /**
  * COMPONENT
@@ -32,6 +33,7 @@ class Routes extends Component {
         <Route exact path="/cars" component={cars} />
         <Route exact path="/cart" component={cart} />
         <Route exact path="/confirmation" component={Confirmation} />
+        <Route exact path="/checkout" component={Checkout} />
 
         {isLoggedIn && (
           <Switch>

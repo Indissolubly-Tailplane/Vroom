@@ -76,9 +76,9 @@ export default class Cart extends Component {
                   Order confirmation
                 </button>
               </Link>
-              <button className="ui blue button" type="button">
-                Checkout
-              </button>
+              <Link to="/checkout" className="ui blue button">
+              Checkout
+              </Link>
             </div>
           </center>
           <Footer />
