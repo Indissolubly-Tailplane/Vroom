@@ -19,7 +19,7 @@ class CarCard extends Component {
     if (!this.props.singleCar) return <div>Loading...</div>
     const singleCar = this.props.singleCar
     return (
-      <Grid columns="two" divided>
+      <Grid columns="two" divided id="cardCardGrid">
         <Grid.Column>
           <Image
             src={singleCar.image}
@@ -38,6 +38,7 @@ class CarCard extends Component {
               {/* <div>{singleCar.color}</div> */}
               <div id="carDescription">{singleCar.description}</div>
               <div id="carPrice">Starting at ${singleCar.price}</div>
+              <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
               <button id="carButton">Add to Cart</button>
               {/* quantity */}
             </div>

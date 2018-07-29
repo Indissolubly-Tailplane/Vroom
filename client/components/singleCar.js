@@ -29,11 +29,38 @@ export const SingleCar = props => {
         <div className="header">{make}</div>
         <div className="meta">{model}</div>
       </div>
-      <div className="extra content">
-        <Link to={`/cars/${id}`}>
-          <button>Details</button>
-        </Link>
-        <button onClick={addToCar}>Add to Cart</button>
+      <div className="card">
+        <div className="content">
+          <center>
+            <Link to={`/cars/${id}`}>
+              <div
+                type="button"
+                className="ui grey basic button"
+                id="singleCarButton"
+              >
+                Details
+              </div>
+            </Link>
+            <div
+              type="button"
+              onClick={addToCar}
+              className="ui blue basic button"
+            >
+              <i className="shop icon" />
+              Add to Cart
+            </div>
+            {/* <div
+              className="ui vertical animated button"
+              onClick={addToCar}
+              tabIndex="0"
+            >
+              <div className="visible content">Add To Cart</div>
+              <div className="hidden content">
+                <i className="shop icon" />
+              </div>
+            </div> */}
+          </center>
+        </div>
       </div>
     </div>
   )
