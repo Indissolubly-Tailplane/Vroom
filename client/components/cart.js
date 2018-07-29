@@ -6,6 +6,7 @@
 */
 import SingleCarCartRevised from './singleCarCartRevised'
 import {fetchCar} from '../store/car'
+import Footer from './Footer'
 
 import React, {Component} from 'react'
 // import SingleCar from './SingleCar';
@@ -71,6 +72,7 @@ export default class Cart extends Component {
               </button>
             </div>
           </center>
+          <Footer />
         </div>
       )
     }

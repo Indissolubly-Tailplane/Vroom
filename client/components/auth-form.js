@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
+import Footer from './Footer'
 
 /**
  * COMPONENT
@@ -43,6 +44,7 @@ const AuthForm = props => {
         </form>
         <a href="/auth/google">{displayName} with Google</a>
       </div>
+      <Footer />
     </center>
   )
 }
