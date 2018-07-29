@@ -21,7 +21,7 @@ export default class Cart extends Component {
   }
 
   componentDidMount() {
-    this.setState({cartItems: window.localStorage.length})
+    this.setState({cartItems: window.sessionStorage.length})
   }
 
   handleRemoveInCart = evt => {
@@ -37,7 +37,7 @@ export default class Cart extends Component {
     }
 
     let totalPrice = 0
-    let cars = Object.entries(window.localStorage).map(car =>
+    let cars = Object.entries(window.sessionStorage).map(car =>
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
@@ -58,7 +58,7 @@ export default class Cart extends Component {
             <h4>Cart</h4>
             <div id="cartContainer">
               <div className="ui items">
-                {Object.entries(window.localStorage).map((item, idx) => (
+                {Object.entries(window.sessionStorage).map((item, idx) => (
                   <SingleCarCartRevised
                     key={idx}
                     car={JSON.parse(item[1])}

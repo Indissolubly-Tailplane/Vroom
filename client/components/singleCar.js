@@ -10,8 +10,8 @@ export const SingleCar = props => {
   const {make, model, id, image} = props.car
 
   const addToCar = () => {
-    window.localStorage.setItem(
-      `item${window.localStorage.length + 1}`,
+    window.sessionStorage.setItem(
+      `item${window.sessionStorage.length + 1}`,
       JSON.stringify(props.car)
     )
   }
