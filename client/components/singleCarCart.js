@@ -35,7 +35,6 @@ export default class SingleCarCart extends Component {
           height="70%"
           width="100%"
           position="absolute"
-          src={image}
           className="ui image"
         />
         <div className="content">
