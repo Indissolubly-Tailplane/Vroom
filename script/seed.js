@@ -92,7 +92,7 @@ const newCars = [
     year: '2019'
   },
   {
-    make: 'Merceds',
+    make: 'Mercedes',
     model: 'G-Wagon',
     color: 'Yellow',
     price: 500000,
