@@ -5,8 +5,8 @@
   - Checkout Button
 */
 import SingleCarCartRevised from './singleCarCartRevised'
-import {fetchCar} from '../store/car'
 import Footer from './Footer'
+import {Link} from 'react-router-dom'
 
 import React, {Component} from 'react'
 // import SingleCar from './SingleCar';
@@ -67,6 +67,11 @@ export default class Cart extends Component {
             </div>
             <div id="checkoutContainer">
               <h1>Total Price: ${numberWithCommas(totalPrice)}</h1>
+              <Link to={`/confirmation`}>
+                <button className="ui purple button" type="button">
+                  Order confirmation
+                </button>
+              </Link>
               <button className="ui blue button" type="button">
                 Checkout
               </button>

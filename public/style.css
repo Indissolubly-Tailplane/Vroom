@@ -60,6 +60,48 @@ h3 {
   text-decoration: none;
 }
 
+.object {
+  position: absolute;
+  transition: all 3s ease-in-out;
+  -webkit-transition: all 3s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 3s ease-in-out; /** Firefox **/
+  -o-transition: all 3s ease-in-out; /** Opera **/
+}
+
+.lambo {
+  top: 30%;
+  right: 1%;
+}
+
+.mclaren {
+  top: 15%;
+  left: 1%;
+}
+
+.ferrari {
+  top: 50%;
+  left: 1%;
+}
+
+.bugatti {
+  top: 70%;
+  right: 1%;
+}
+
+#axis:hover .move-right {
+  transform: translate(400%, 0);
+  -webkit-transform: translate(400%, 0);
+  -o-transform: translate(400%, 0);
+  -moz-transform: translate(400%, 0);
+}
+
+#axis:hover .move-left {
+  transform: translate(-400%, 0);
+  -webkit-transform: translate(-400%, 0);
+  -o-transform: translate(-400%, 0);
+  -moz-transform: translate(-400%, 0);
+}
+
 .footer {
   right: 0;
   bottom: 0;
