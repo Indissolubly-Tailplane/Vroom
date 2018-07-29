@@ -22,7 +22,7 @@ export default class SingleCarCart extends Component {
   }
 
   handleRemove = evt => {
-    window.localStorage.removeItem(this.props.carKeyInlocalStorage)
+    window.sessionStorage.removeItem(this.props.carKeyInlocalStorage)
     this.props.handleRemove()
   }
 
@@ -35,7 +35,6 @@ export default class SingleCarCart extends Component {
           height="70%"
           width="100%"
           position="absolute"
-          src={image}
           className="ui image"
         />
         <div className="content">

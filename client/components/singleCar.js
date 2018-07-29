@@ -10,8 +10,8 @@ export const SingleCar = props => {
   const {make, model, id, image} = props.car
 
   const addToCar = () => {
-    window.localStorage.setItem(
-      `item${window.localStorage.length + 1}`,
+    window.sessionStorage.setItem(
+      `item${window.sessionStorage.length + 1}`,
       JSON.stringify(props.car)
     )
   }
@@ -19,11 +19,12 @@ export const SingleCar = props => {
   return (
     <div className="card" id="card">
       <Image
-        height="70%"
-        width="100%"
-        position="absolute"
+        // height="auto"
+        // width="100%"
+        // position="absolute"
         src={image}
         className="ui image"
+        id="carImageCard"
       />
       <div className="content">
         <div className="header">{make}</div>
@@ -33,19 +34,11 @@ export const SingleCar = props => {
         <div className="content">
           <center>
             <Link to={`/cars/${id}`}>
-              <div
-                type="button"
-                className="ui grey basic button"
-                id="singleCarButton"
-              >
+              <div className="ui basic grey button" id="singleCarButton">
                 Details
               </div>
             </Link>
-            <div
-              type="button"
-              onClick={addToCar}
-              className="ui blue basic button"
-            >
+            <div onClick={addToCar} className="ui blue button">
               <i className="shop icon" />
               Add to Cart
             </div>

@@ -5,8 +5,8 @@
   - Checkout Button
 */
 import SingleCarCartRevised from './singleCarCartRevised'
-import {fetchCar} from '../store/car'
 import Footer from './Footer'
+import {Link} from 'react-router-dom'
 
 import React, {Component} from 'react'
 // import SingleCar from './SingleCar';
@@ -21,7 +21,7 @@ export default class Cart extends Component {
   }
 
   componentDidMount() {
-    this.setState({cartItems: window.localStorage.length})
+    this.setState({cartItems: window.sessionStorage.length})
   }
 
   handleRemoveInCart = evt => {
@@ -37,7 +37,7 @@ export default class Cart extends Component {
     }
 
     let totalPrice = 0
-    let cars = Object.entries(window.localStorage).map(car =>
+    let cars = Object.entries(window.sessionStorage).map(car =>
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
@@ -46,7 +46,11 @@ export default class Cart extends Component {
     // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
 
     if (this.state.cartItems === 0) {
-      return <h1>Cart is empty!</h1>
+      return (
+        <center>
+          <h1>Cart is empty!</h1>
+        </center>
+      )
     } else {
       return (
         <div>
@@ -54,7 +58,7 @@ export default class Cart extends Component {
             <h4>Cart</h4>
             <div id="cartContainer">
               <div className="ui items">
-                {Object.entries(window.localStorage).map((item, idx) => (
+                {Object.entries(window.sessionStorage).map((item, idx) => (
                   <SingleCarCartRevised
                     key={idx}
                     car={JSON.parse(item[1])}
@@ -67,6 +71,11 @@ export default class Cart extends Component {
             </div>
             <div id="checkoutContainer">
               <h1>Total Price: ${numberWithCommas(totalPrice)}</h1>
+              <Link to={`/confirmation`}>
+                <button className="ui purple button" type="button">
+                  Order confirmation
+                </button>
+              </Link>
               <button className="ui blue button" type="button">
                 Checkout
               </button>

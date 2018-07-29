@@ -14,12 +14,12 @@ export default class CartNumber extends Component {
 
   componentDidMount() {
     this.setState({
-      cartItems: window.localStorage.length
+      cartItems: window.sessionStorage.length
     })
   }
 
   render() {
-    console.log(window.localStorage.length)
+    console.log(window.sessionStorage.length)
     return (
       <div>
         <center>
