@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import axios from 'axios'
+import { connect } from 'react-redux';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class CheckoutForm extends Component {
           <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
           classes={elementClasses}/>
           {/* <input id="example3-zip" data-tid="elements_examples.form.postal_code_placeholder" className="field empty third-width" placeholder="94107"></input> */}
-          <button onClick={this.submit}>Pay $$$</button>
+          <button onClick={this.submit}>Pay {this.props.cartTotal}</button>
           {/* Pass prop in above to specify amount for $$$ */}
         </div>
 
@@ -133,4 +134,10 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+const mapStateToProps = state => ({
+  cartTotal: state.car.cartTotal
+})
+
+const StripeComponent = injectStripe(CheckoutForm);
+export default connect(mapStateToProps, null)(StripeComponent)
+

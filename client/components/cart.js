@@ -7,21 +7,35 @@
 import SingleCarCartRevised from './singleCarCartRevised'
 import Footer from './Footer'
 import {Link} from 'react-router-dom'
+import {updateTotal} from '../store/car'
 
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 // import SingleCar from './SingleCar';
 
-export default class Cart extends Component {
+class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      cartItems: 0
+      cartItems: 0,
+      cartTotal: 0
     }
     this.handleRemoveInCart = this.handleRemoveInCart.bind(this)
   }
 
   componentDidMount() {
     this.setState({cartItems: window.sessionStorage.length})
+    // convert price to Dollar Formar
+
+    let totalPrice = 0
+    let cars = Object.entries(window.sessionStorage).map(car =>
+      JSON.parse(car[1])
+    )
+    for (let i = 0; i < cars.length; i++) {
+      totalPrice += cars[i].price
+    }
+    this.setState({cartTotal: totalPrice})
+    // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
   }
 
   handleRemoveInCart = evt => {
@@ -31,19 +45,9 @@ export default class Cart extends Component {
   }
 
   render() {
-    // convert price to Dollar Formar
     const numberWithCommas = x => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
-
-    let totalPrice = 0
-    let cars = Object.entries(window.sessionStorage).map(car =>
-      JSON.parse(car[1])
-    )
-    for (let i = 0; i < cars.length; i++) {
-      totalPrice += cars[i].price
-    }
-    // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
 
     if (this.state.cartItems === 0) {
       return (
@@ -64,21 +68,23 @@ export default class Cart extends Component {
                     car={JSON.parse(item[1])}
                     carKeyInlocalStorage={item[0]}
                     handleRemove={this.handleRemoveInCart}
-                    totalPrice={this.state.totalPrice}
+                    totalPrice={this.state.cartTotal}
                   />
                 ))}
               </div>
             </div>
             <div id="checkoutContainer">
-              <h1>Total Price: ${numberWithCommas(totalPrice)}</h1>
+              <h1>Total Price: ${numberWithCommas(this.state.cartTotal)}</h1>
               <Link to={`/confirmation`}>
                 <button className="ui purple button" type="button">
                   Order confirmation
                 </button>
-              </Link>
+                </Link>
+              <button onClick={this.props.updateTotal(this.state.cartTotal)}>
               <Link to="/checkout" className="ui blue button">
               Checkout
               </Link>
+              </button>
             </div>
           </center>
           <Footer />
@@ -87,3 +93,17 @@ export default class Cart extends Component {
     }
   }
 }
+
+const mapStateToProps = state => ({
+  cartTotal: state.car.cartTotal
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateTotal: (total) => {
+      dispatch(updateTotal(total));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
