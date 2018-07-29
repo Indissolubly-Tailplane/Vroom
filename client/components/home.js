@@ -12,7 +12,7 @@ const Home = ({isLoggedIn, name}) => {
           <div className="homeContainer">
             <div className="overlay-desc">
               <center>
-                <h2>Welcome Back {name}</h2>
+                <h2>Welcome {name}</h2>
                 <a href="/cars/" className="stage-button">
                   Discover
                 </a>

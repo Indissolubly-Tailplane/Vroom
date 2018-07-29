@@ -27,6 +27,9 @@ export default class SingleCarCart extends Component {
   }
 
   render() {
+    const numberWithCommas = x => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }
     const {make, model, color, price, year, description, image} = this.props.car
     return (
       <div className="ui items">
@@ -45,7 +48,7 @@ export default class SingleCarCart extends Component {
               <span className="model">{model}</span>
               <span className="year">{year}</span>
               <div className="meta">
-                <span className="price">${price}</span>
+                <span className="price">${numberWithCommas(price)}</span>
               </div>
             </div>
             <div className="extra">
