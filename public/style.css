@@ -60,6 +60,48 @@ h3 {
   text-decoration: none;
 }
 
+.object {
+  position: absolute;
+  transition: all 3s ease-in-out;
+  -webkit-transition: all 3s ease-in-out; /** Chrome & Safari **/
+  -moz-transition: all 3s ease-in-out; /** Firefox **/
+  -o-transition: all 3s ease-in-out; /** Opera **/
+}
+
+.lambo {
+  top: 30%;
+  right: 1%;
+}
+
+.mclaren {
+  top: 15%;
+  left: 1%;
+}
+
+.ferrari {
+  top: 50%;
+  left: 1%;
+}
+
+.bugatti {
+  top: 70%;
+  right: 1%;
+}
+
+#axis:hover .move-right {
+  transform: translate(400%, 0);
+  -webkit-transform: translate(400%, 0);
+  -o-transform: translate(400%, 0);
+  -moz-transform: translate(400%, 0);
+}
+
+#axis:hover .move-left {
+  transform: translate(-400%, 0);
+  -webkit-transform: translate(-400%, 0);
+  -o-transform: translate(-400%, 0);
+  -moz-transform: translate(-400%, 0);
+}
+
 .footer {
   right: 0;
   bottom: 0;
@@ -123,6 +165,17 @@ h4 {
   padding-bottom: 150px;
 }
 
+#carImageCard {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 60%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
 #carDescription {
   padding: 3%;
   font-size: 15px;
@@ -163,9 +216,9 @@ h4 {
   /* text-decoration: none; */
 }
 
-#card {
-  /* background-color: #525252; */
-}
+/* #card { */
+/* background-color: #525252; */
+/* } */
 
 #cartCard {
   /* background-color: #000000; */
