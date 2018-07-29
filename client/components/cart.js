@@ -46,7 +46,11 @@ export default class Cart extends Component {
     // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
 
     if (this.state.cartItems === 0) {
-      return <h1>Cart is empty!</h1>
+      return (
+        <center>
+          <h1>Cart is empty!</h1>
+        </center>
+      )
     } else {
       return (
         <div>
