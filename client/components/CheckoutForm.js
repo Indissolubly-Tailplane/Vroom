@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import {CardElement, injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement} from 'react-stripe-elements';
 import axios from 'axios'
 
 class CheckoutForm extends Component {
@@ -23,10 +23,46 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    let elementStyles = {
+      base: {
+        color: '#fff',
+        fontWeight: 600,
+        fontFamily: 'Quicksand, Open Sans, Segoe UI, sans-serif',
+        fontSize: '16px',
+        fontSmoothing: 'antialiased',
+
+        ':focus': {
+          color: '#424770',
+        },
+
+        '::placeholder': {
+          color: '#9BACC8',
+        },
+
+        ':focus::placeholder': {
+          color: '#CFD7DF',
+        },
+      },
+      invalid: {
+        color: '#fff',
+        ':focus': {
+          color: '#FA755A',
+        },
+        '::placeholder': {
+          color: '#FFCCA5',
+        },
+      },
+    };
+
+    let elementClasses = {
+      focus: 'focus',
+      empty: 'empty',
+      invalid: 'invalid',
+    };
     return (
-      <div className="checkout group">
+      <div className="cell example example3">
         <p>Would you like to complete the purchase?</p>
-        <CardElement className="StripeElement" style={{
+        {/* <CardElement className="StripeElement" style={{
             base: {
                 iconColor: '#666EE8',
                 color: '#31325F',
@@ -39,8 +75,16 @@ class CheckoutForm extends Component {
                     color: '#CFD7E0',
                 }
             }
-        }}/>
-        <button onClick={this.submit}>Send</button>
+        }}/> */}
+        <div className="fieldset" >
+          <CardNumberElement className="example3-card-number field empty" style={elementStyles}
+          classes={elementClasses}/>
+          <CardExpiryElement className="example3-card-expiry field empty third-width" style={elementStyles}
+          classes={elementClasses}/>
+          <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
+          classes={elementClasses}/>
+          <button onClick={this.submit}>Send</button>
+        </div>
       </div>
     );
   }
