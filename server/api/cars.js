@@ -36,7 +36,5 @@ router.get('/:id', asyncHandler(async (req,res,next) => {
 //   res.send(carsByUser);
 // }))
 
-router.post
-
 
 module.exports = router
