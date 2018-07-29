@@ -62,20 +62,16 @@ class CheckoutForm extends Component {
     return (
       <div className="cell example example3">
         <p>Would you like to complete the purchase?</p>
-        {/* <CardElement className="StripeElement" style={{
-            base: {
-                iconColor: '#666EE8',
-                color: '#31325F',
-                lineHeight: '40px',
-                fontWeight: 300,
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSize: '12px',
 
-                '::placeholder': {
-                    color: '#CFD7E0',
-                }
-            }
-        }}/> */}
+        <div className="fieldset">
+        <input id="example3-name" data-tid="elements_examples.form.name_label" className="field" type="text" placeholder="Name" required="" autocomplete="name"></input>
+
+        <input id="example3-email" data-tid="elements_examples.form.email_label" class="field half-width" type="email" placeholder="Email" required="" autocomplete="email"></input>
+
+        <input id="example3-phone" data-tid="elements_examples.form.phone_label" class="field half-width" type="tel" placeholder="Phone" required="" autocomplete="tel"></input>
+
+        </div>
+
         <div className="fieldset" >
           <CardNumberElement className="example3-card-number field empty" style={elementStyles}
           classes={elementClasses}/>
@@ -83,7 +79,8 @@ class CheckoutForm extends Component {
           classes={elementClasses}/>
           <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
           classes={elementClasses}/>
-          <button onClick={this.submit}>Send</button>
+          <button onClick={this.submit}>Pay $$$</button>
+          {/* Pass prop in above to specify amount for $$$ */}
         </div>
       </div>
     );
