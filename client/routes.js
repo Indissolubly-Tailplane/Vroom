@@ -9,6 +9,8 @@ import cars from './components/cars'
 import cart from './components/cart'
 import {SingleCar} from './components/SingleCar'
 import CarCard from './components/CarCard'
+import Users from './components/Users'
+import UserCard from './components/UserCard'
 
 /**
  * COMPONENT
@@ -30,6 +32,8 @@ class Routes extends Component {
         <Route exact path="/cars/:id" component={CarCard} />
         <Route exact path="/cars" component={cars} />
         <Route exact path="/cart" component={cart} />
+        <Route exact path="/admin" component={Users} />
+        <Route exact path="/users/:id" component={UserCard} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
