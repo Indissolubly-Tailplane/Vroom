@@ -12,7 +12,7 @@ class CarCard extends Component {
   addToCar = () => {
     window.sessionStorage.setItem(
       `item${window.sessionStorage.length + 1}`,
-      JSON.stringify(this.props.car)
+      JSON.stringify(this.props.singleCar)
     )
     this.props.UpdateItemsInCart()
   }
