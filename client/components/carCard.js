@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {fetchCar} from '../store/car'
 import {connect} from 'react-redux'
 import {Grid, Image} from 'semantic-ui-react'
-import {UpdateItemsInCart} from ''
+import {UpdateItemsInCart} from '../store/cart'
 
 class CarCard extends Component {
   componentDidMount() {
@@ -46,7 +46,7 @@ class CarCard extends Component {
                 Starting at ${numberWithCommas(singleCar.price)}
               </div>
               <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
-              <button id="carButton">Add to Cart</button>
+              <button id="carButton" onClick= {this.addToCar}>Add to Cart</button>
             </div>
           </div>
         </Grid.Column>
@@ -55,11 +55,17 @@ class CarCard extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  return {singleCar: state.car.singleCar[0]}
+  return {
+    singleCar: state.car.singleCar[0],
+    itemsInCart: state.cart.itemsInCart
+  }
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadOneCar: () => {
     dispatch(fetchCar(ownProps.match.params.id))
+  },
+  UpdateItemsInCart: () => {
+    dispatch(UpdateItemsInCart())
   }
 })
 
