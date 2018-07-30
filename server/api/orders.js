@@ -6,14 +6,16 @@ const asyncHandler = require('express-async-handler')
 //get all orders
 
 router.get(
-  '/email',
+  '/email', //cg@email.com search?email=cg%40email%2Ecom
   asyncHandler(async (req, res, next) => {
     console.log('hello from Order api/orders')
     const allOrders = await Order.findAll({
       where: {
         email: req.body.email
+        //req.query.email
       }
     })
+    console.log('req.query: ', req.query)
     res.json(allOrders)
   })
 )
