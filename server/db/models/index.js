@@ -2,6 +2,8 @@ const User = require('./user')
 const Car = require('./car')
 const Order = require('./order')
 
+// remove dead code
+
 // Car.belongsToMany(User, { through: 'cart' });
 // User.hasMany(Car);
 

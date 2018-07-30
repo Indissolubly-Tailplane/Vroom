@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 // import SingleCar from './SingleCar';
 import Footer from './Footer'
 
+// can be written as a stateless functional component
 export default class Confirmation extends Component {
   constructor() {
     super()

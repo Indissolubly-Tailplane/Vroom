@@ -1,3 +1,5 @@
+// use GIT for version control, not separate files
+
 /* We need...
   - Car name
   - Image

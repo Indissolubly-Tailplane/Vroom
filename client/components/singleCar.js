@@ -4,18 +4,20 @@ import {Link} from 'react-router-dom'
 import {Image} from 'semantic-ui-react'
 import {UpdateItemsInCart} from '../store/cart'
 
-
 /**
  * COMPONENT
  */
+// modularize this into smaller sub-components
+// can start with buttons and their click handlers
+
 class SingleCar extends Component {
-  
+  // variable name typo -- 'addToCar'
   addToCar = () => {
     window.sessionStorage.setItem(
       `item${window.sessionStorage.length + 1}`,
       JSON.stringify(this.props.car)
     )
-    this.props.UpdateItemsInCart();
+    this.props.UpdateItemsInCart()
   }
   render() {
     const {make, model, id, image} = this.props.car
@@ -45,6 +47,7 @@ class SingleCar extends Component {
                 <i className="shop icon" />
                 Add to Cart
               </div>
+              {/* remove dead code */}
               {/* <div
                 className="ui vertical animated button"
                 onClick={addToCar}
@@ -60,18 +63,17 @@ class SingleCar extends Component {
         </div>
       </div>
     )
-    }
   }
+}
 
-  const mapStateToProps = state => ({
-    itemsInCart: state.cart.itemsInCart
-  })
+const mapStateToProps = state => ({
+  itemsInCart: state.cart.itemsInCart
+})
 
-  const dispatchStateToProps = dispatch => ({
-    UpdateItemsInCart: () => {
-      dispatch(UpdateItemsInCart())
-    }
-  })
+const dispatchStateToProps = dispatch => ({
+  UpdateItemsInCart: () => {
+    dispatch(UpdateItemsInCart())
+  }
+})
 
-  export default connect(mapStateToProps, dispatchStateToProps)(SingleCar)
-
+export default connect(mapStateToProps, dispatchStateToProps)(SingleCar)
