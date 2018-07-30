@@ -115,7 +115,7 @@ class CheckoutForm extends Component {
                 <h2>Payment Unsuccessful</h2>
               )
             ) : (
-              null
+              <h1>payment success : null </h1>
             )
           }
       </div>
