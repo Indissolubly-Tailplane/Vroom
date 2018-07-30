@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
@@ -11,7 +10,8 @@ import cart from './components/cart'
 import {SingleCar} from './components/SingleCar'
 import CarCard from './components/CarCard'
 import Confirmation from './components/confirmation'
-import Checkout from './components/Checkout';
+import Checkout from './components/Checkout'
+import UserProfile from './components/userProfile'
 
 /**
  * COMPONENT
@@ -35,6 +35,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={cart} />
         <Route exact path="/confirmation" component={Confirmation} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/userProfile" component={UserProfile} />
 
         {isLoggedIn && (
           <Switch>
