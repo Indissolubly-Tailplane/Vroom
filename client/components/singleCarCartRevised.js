@@ -23,7 +23,8 @@ export default class SingleCarCart extends Component {
 
   handleRemove = evt => {
     window.sessionStorage.removeItem(this.props.carKeyInlocalStorage)
-    this.props.handleRemove()
+    // this.props.handleRemove()
+    this.props.calculateTotal();
   }
 
   render() {

@@ -5,13 +5,15 @@ import history from '../history'
  */
 const GET_ALL_CARS = 'GET_ALL_CARS'
 const GET_CAR = 'GET_CAR'
+const UPDATE_TOTAL = 'UPDATE_TOTAL'
 
 /**
  * INITIAL STATE
  */
 const initialState = {
   allCars: [],
-  singleCar: {}
+  singleCar: {},
+  cartTotal: 0
 }
 
 /**
@@ -19,6 +21,7 @@ const initialState = {
  */
 const getAllCars = allCars => ({type: GET_ALL_CARS, allCars})
 const getCar = singleCar => ({type: GET_CAR, singleCar})
+export const updateTotal = total => ({type: UPDATE_TOTAL, total})
 
 /**
  * THUNK CREATORS
@@ -56,6 +59,11 @@ export default function(state = initialState, action) {
         ...state,
         singleCar: action.singleCar
       }
+    case UPDATE_TOTAL:
+      return {
+      ...state,
+      cartTotal: action.total
+    }
     default:
       return state
   }
