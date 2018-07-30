@@ -2,6 +2,7 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
+// remove dead code
 const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING

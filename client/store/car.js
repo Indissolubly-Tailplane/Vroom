@@ -13,6 +13,7 @@ const UPDATE_TOTAL = 'UPDATE_TOTAL'
 const initialState = {
   allCars: [],
   singleCar: {},
+  // rather than keeping track of total cart price in state, generate it dynamically from the price of items in your carts -- no derived state
   cartTotal: 0
 }
 

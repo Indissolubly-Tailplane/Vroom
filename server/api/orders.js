@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler')
 
 //get all orders
 
+// good use case for query string
 router.get(
   '/email',
   asyncHandler(async (req, res, next) => {
@@ -18,6 +19,8 @@ router.get(
   })
 )
 
+// good use case for protected route / gatekeeper middleware
+// only Admins should be able to see all orders
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
@@ -33,6 +36,9 @@ router.get(
   })
 )
 
+// good use case for protected route / gatekeeper middleware
+// check req.user for Admin Id or current user
+
 //get order by Id
 router.get(
   '/:orderId',
@@ -42,6 +48,8 @@ router.get(
     res.json(order)
   })
 )
+
+// remove dead code
 
 // get order by email
 // router.get(
