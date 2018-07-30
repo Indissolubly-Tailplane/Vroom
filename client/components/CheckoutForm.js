@@ -97,7 +97,7 @@ class CheckoutForm extends Component {
           <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
           classes={elementClasses}/>
           {/* <input id="example3-zip" data-tid="elements_examples.form.postal_code_placeholder" className="field empty third-width" placeholder="94107"></input> */}
-          <button onClick={this.submit}>Pay {this.props.cartTotal}</button>
+          <button onClick={this.submit}>Pay ${this.props.cartTotal}</button>
           {/* Pass prop in above to specify amount for $$$ */}
         </div>
 
