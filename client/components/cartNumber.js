@@ -1,31 +1,27 @@
 import React, {Component} from 'react'
 import {WSAEINVALIDPROVIDER} from 'constants'
+import {connect} from 'react-redux'
 
 /**
  * COMPONENT
  */
-export default class CartNumber extends Component {
-  constructor() {
-    super()
-    this.state = {
-      cartItems: 0
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      cartItems: window.localStorage.length
-    })
-  }
+export class CartNumber extends Component {
 
   render() {
-    console.log(window.localStorage.length)
     return (
       <div>
         <center>
-          <span className="button__badge">{this.state.cartItems}</span>
+          <span className="button__badge">{this.props.itemsInCart}</span>
+
         </center>
       </div>
     )
   }
 }
+const mapStateToProps = state => ({
+  itemsInCart: state.cart.itemsInCart
+})
+
+
+export default connect (mapStateToProps,null)(CartNumber)
+

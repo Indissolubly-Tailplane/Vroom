@@ -20,7 +20,7 @@ const initialState = {
  * ACTION CREATORS
  */
 const getAllUsers = allUsers => ({type: GET_ALL_USERS, allUsers})
-const getUser = user => ({type: GET_USER, singleUser})
+const getUser = singleUser => ({type: GET_USER, singleUser})
 const removeUser = () => ({type: REMOVE_USER})
 
 /**

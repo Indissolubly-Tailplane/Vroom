@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {fetchUser} from '../store/car'
+import {fetchUser} from '../store/user'
 import {connect} from 'react-redux'
-import {Grid, Image} from 'semantic-ui-react'
+import {Grid, Image, Icon, Label, Menu, Table, Button} from 'semantic-ui-react'
 
 class UserCard extends Component {
   componentDidMount() {
@@ -9,33 +9,48 @@ class UserCard extends Component {
   }
 
   render() {
+    console.log('this.props.singleUser: ', this.props.singleUser)
     if (!this.props.singleUser) return <div>Loading...</div>
     const singleUser = this.props.singleUser
+
     return (
-      <Grid columns="two" id="cardCardGrid" divided>
-        <Grid.Column>
-          <Image
-            src={singleUser.image}
-            size="big"
-            verticalAlign="middle"
-            centered
-          />
-        </Grid.Column>
-        <Grid.Column>
-          <div className="CarCard">
-            <div className="content">
-              <div id="carName">
-                {singleUser.firstName} {singleUser.lastName}
-              </div>
-              <div id="carYear">{singleUser.email}</div>
-              <div id="carYear">Admin Status:</div>
-              <div id="carDescription">Cars Purchase:</div>
-              <button id="carButton">Remove</button>
-              {/* quantity */}
-            </div>
-          </div>
-        </Grid.Column>
-      </Grid>
+      <Table celled padded>
+        {/* <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell singleLine>Name</Table.HeaderCell>
+            <Table.HeaderCell>E-mail</Table.HeaderCell>
+            <Table.HeaderCell>Admin Status</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header> */}
+
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>
+              {singleUser.firstName} {singleUser.lastName}
+            </Table.Cell>
+            <Table.Cell>{singleUser.email}</Table.Cell>
+            {singleUser.adminStatus ? (
+              <Table.Cell> This user is an admin </Table.Cell>
+            ) : (
+              <Table.Cell> This user is NOT an admin </Table.Cell>
+            )}
+          </Table.Row>
+        </Table.Body>
+
+        <Table.Footer fullWidth>
+          <Table.Row>
+            <Table.HeaderCell />
+            <Table.HeaderCell colSpan="4">
+              <Button size="small" color="red">
+                Remove User
+              </Button>
+              <Button size="small" color="blue">
+                Make Admin
+              </Button>
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
     )
   }
 }

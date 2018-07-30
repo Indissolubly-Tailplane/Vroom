@@ -11,6 +11,8 @@ import {SingleCar} from './components/SingleCar'
 import CarCard from './components/CarCard'
 import Users from './components/Users'
 import UserCard from './components/UserCard'
+import Confirmation from './components/confirmation'
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -34,7 +36,10 @@ class Routes extends Component {
         <Route exact path="/cart" component={cart} />
         <Route exact path="/admin" component={Users} />
         <Route exact path="/admin/:id" component={UserCard} />
-        {isLoggedIn && ( //insert stuff for isLoggedIn && admin
+        <Route exact path="/confirmation" component={Confirmation} />
+        <Route exact path="/checkout" component={Checkout} />
+
+        {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={Home} />
