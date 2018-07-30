@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {fetchCar} from '../store/car'
 import {connect} from 'react-redux'
 import {Grid, Image} from 'semantic-ui-react'
+import {UpdateItemsInCart} from ''
 
 class CarCard extends Component {
   componentDidMount() {
@@ -11,8 +12,9 @@ class CarCard extends Component {
   addToCar = () => {
     window.sessionStorage.setItem(
       `item${window.sessionStorage.length + 1}`,
-      JSON.stringify(this.props.singleCar)
+      JSON.stringify(this.props.car)
     )
+    this.props.UpdateItemsInCart()
   }
 
   render() {
@@ -45,7 +47,6 @@ class CarCard extends Component {
               </div>
               <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
               <button id="carButton">Add to Cart</button>
-              {/* quantity */}
             </div>
           </div>
         </Grid.Column>
