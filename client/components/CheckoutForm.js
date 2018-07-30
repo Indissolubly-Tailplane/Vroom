@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import { connect } from 'react-redux';
+import {postOrderToDb} from '../store/cart'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -17,12 +18,9 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     ev.preventDefault();
-    window.sessionStorage.paymentEmail = this.state.email;
     try {
       let {token} = await this.props.stripe.createToken({name: "Name"});
-      console.log('TOKEN:', token)
       if (token) {
-        console.log('TOKEN RAN')
         let response = await fetch("/charge", {
           method: "POST",
           headers: {"Content-Type": "text/plain"},
@@ -33,11 +31,13 @@ class CheckoutForm extends Component {
         });
         if (response.ok) {
           this.setState({paymentSuccess: true})
+          console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
+          this.props.postOrderToDb(this.state.email);
+          window.sessionStorage.clear();
         }
       } else {
-        console.log("Payment response:", response)
         this.setState({paymentSuccess: false})
-        window.sessionStorage.removeItem("paymentEmail")
+        console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
       }
     } catch (err) {
       console.log(err);
@@ -109,7 +109,7 @@ class CheckoutForm extends Component {
 
           {
             this.state.paymentSuccess !== null ? (
-              !this.state.paymentSucess ? (
+              this.state.paymentSucess ? (
                 <h1>Payment Successful</h1>
               ) : (
                 <h2>Payment Unsuccessful</h2>
@@ -127,6 +127,12 @@ const mapStateToProps = state => ({
   cartTotal: state.car.cartTotal
 })
 
+const mapDispatchToProps = dispatch => ({
+    postOrderToDb: orderEmail => {
+      dispatch(postOrderToDb(orderEmail))
+    }
+  })
+
 const StripeComponent = injectStripe(CheckoutForm);
-export default connect(mapStateToProps, null)(StripeComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(StripeComponent)
 
