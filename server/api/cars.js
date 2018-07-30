@@ -23,10 +23,10 @@ router.get('/:id', asyncHandler(async (req,res,next) => {
 
 router.post("/charge", async (req, res) => {
     let {status} = await stripe.charges.create({
-      amount: 2000,
+      amount: req.body.purchaseTotal,
       currency: "usd",
       description: "An example charge",
-      source: req.body
+      source: req.body.tokenId
     });
     // ALSO SEND ORDER INFORMATION TO DB
     res.json({status});
