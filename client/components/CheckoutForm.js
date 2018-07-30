@@ -9,16 +9,16 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      paymentSuccess: false
+      paymentSuccess: false,
+      email: ""
     }
     this.submit = this.submit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async submit(ev) {
-    console.log('SUBMIT RAN')
+    window.sessionStorage.paymentEmail = this.state.email;
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    const amount = 2000
-    console.log('TOKEN: ', token);
     let response = await fetch("/charge", {
       method: "POST",
       headers: {"Content-Type": "text/plain"},
@@ -27,16 +27,18 @@ class CheckoutForm extends Component {
         purchaseTotal: amount
       }
     });
-    // console.log("TOKEN", token)
-    // let response = await axios.post('/charge', token.id)
-    // console.log('RESPONSE: ', response)
+
     if (response.ok) {
-      console.log("PURCHASE: ", response)
+      console.log("PURCHASE: ", response);
       this.setState({paymentSuccess: true})
     } else {
       this.setState({paymentSuccess: false})
     }
 
+  }
+
+  handleChange(event) {
+    this.setState({email: event.target.value})
   }
 
   render() {
@@ -78,28 +80,27 @@ class CheckoutForm extends Component {
     };
     return (
       <div className="cell example example3">
-        <div className="fieldset">
-        <input id="example3-name" data-tid="elements_examples.form.name_label" className="field" type="text" placeholder="Name" required="" autoComplete="name"></input>
+          <form>
+          <div className="fieldset">
+            <input id="example3-name" data-tid="elements_examples.form.name_label" className="field" type="text" placeholder="Name" required="" autoComplete="name"></input>
+            <input id="example3-email" data-tid="elements_examples.form.email_label" className="field half-width" type="email" placeholder="Email" required="" autoComplete="email" onChange={this.handleChange} value={this.state.email}></input>
+            <input id="example3-phone" data-tid="elements_examples.form.phone_label" className="field half-width" type="tel" placeholder="Phone" required="" autoComplete="tel"></input>
+          </div>
 
-        <input id="example3-email" data-tid="elements_examples.form.email_label" className="field half-width" type="email" placeholder="Email" required="" autoComplete="email"></input>
-
-        <input id="example3-phone" data-tid="elements_examples.form.phone_label" className="field half-width" type="tel" placeholder="Phone" required="" autoComplete="tel"></input>
-
-        </div>
-
-        <div className="fieldset" >
-          <CardNumberElement className="example3-card-number field empty" style={elementStyles}
-          classes={elementClasses}/>
-          <CardExpiryElement className="example3-card-expiry field empty third-width" style={elementStyles}
-          classes={elementClasses}/>
-          <PostalCodeElement className="example3-postal-code field empty third-width" style={elementStyles}
-          classes={elementClasses}/>
-          <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
-          classes={elementClasses}/>
-          {/* <input id="example3-zip" data-tid="elements_examples.form.postal_code_placeholder" className="field empty third-width" placeholder="94107"></input> */}
-          <button onClick={this.submit}>Pay ${this.props.cartTotal}</button>
-          {/* Pass prop in above to specify amount for $$$ */}
-        </div>
+          <div className="fieldset" >
+            <CardNumberElement className="example3-card-number field empty" style={elementStyles}
+            classes={elementClasses}/>
+            <CardExpiryElement className="example3-card-expiry field empty third-width" style={elementStyles}
+            classes={elementClasses}/>
+            <PostalCodeElement className="example3-postal-code field empty third-width" style={elementStyles}
+            classes={elementClasses}/>
+            <CardCVCElement className="example3-card-cvc field empty third-width" style={elementStyles}
+            classes={elementClasses}/>
+            {/* <input id="example3-zip" data-tid="elements_examples.form.postal_code_placeholder" className="field empty third-width" placeholder="94107"></input> */}
+            <button onClick={this.submit}>Pay ${this.props.cartTotal}</button>
+            {/* Pass prop in above to specify amount for $$$ */}
+          </div>
+          </form>
 
 
           {
