@@ -22,7 +22,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/UserProfile">Profile</Link>
         </Menu.Item>
       ) : (
-        <div />
+        <Menu.Item>
+          <Link to="/GuestProfile">Profile</Link>
+        </Menu.Item>
       )}
       <div className="right menu">
         <Menu.Item>
