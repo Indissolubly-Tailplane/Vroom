@@ -4,27 +4,58 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
+const GET_ALL_USERS = 'GET_ALL_USERS'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const initialState = {
+  allUsers: [],
+  singleUser: {},
+  defaultUser: {}
+}
 
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
+
+const getAllUsers = allUsers => ({type: GET_ALL_USERS, allUsers})
+const getUser = singleUser => ({type: GET_USER, singleUser})
 const removeUser = () => ({type: REMOVE_USER})
 
 /**
  * THUNK CREATORS
  */
+export const fetchAllUsers = () => async dispatch => {
+  try {
+    const allUsers = await axios.get('/api/users')
+    dispatch(getAllUsers(allUsers.data))
+  } catch (err) {
+    console.log(err)
+  }
+}
+export const fetchUser = id => async dispatch => {
+  try {
+    const user = await axios.get(`/api/users/${id}`)
+    dispatch(getUser(user.data))
+  } catch (err) {
+    console.log(err)
+  }
+}
+export const deleteUser = userId => async dispatch => {
+  try {
+    await axios.delete(`api/users/${userId}`)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || defaultUser))
+    dispatch(getUser(res.data || initialState.defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -47,7 +78,7 @@ export const auth = (email, password, method) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
-  window.sessionStorage.clear();
+  window.sessionStorage.clear()
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
@@ -60,12 +91,20 @@ export const logout = () => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.allUsers
+      }
     case GET_USER:
-      return action.user
+      return {
+        ...state,
+        singleUser: action.singleUser
+      }
     case REMOVE_USER:
-      return defaultUser
+      return initialState.defaultUser
     default:
       return state
   }
