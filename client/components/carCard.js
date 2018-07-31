@@ -40,13 +40,17 @@ class CarCard extends Component {
                 {singleCar.make} {singleCar.model}
               </div>
               <div id="carYear">{singleCar.year}</div>
-              {/* <div>{singleCar.color}</div> */}
+              {singleCar.limitedEdition === true ? (
+                <div id="carYear">Limited Edition</div>
+              ) : null}{' '}
               <div id="carDescription">{singleCar.description}</div>
               <div id="carPrice">
                 Starting at ${numberWithCommas(singleCar.price)}
               </div>
               <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
-              <button id="carButton" onClick= {this.addToCar}>Add to Cart</button>
+              <button id="carButton" onClick={this.addToCar}>
+                Add to Cart
+              </button>
             </div>
           </div>
         </Grid.Column>
