@@ -3,12 +3,9 @@ import {fetchCar} from '../store/car'
 import {connect} from 'react-redux'
 import {Grid, Image} from 'semantic-ui-react'
 import {UpdateItemsInCart} from '../store/cart'
-import OrderItem from './orderItem'
-import {fetchOrderByEmail} from '../store/order'
-import {me} from '../store'
 
 class CarCard extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     this.props.loadOneCar()
   }
 
@@ -64,10 +61,7 @@ class CarCard extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     singleCar: state.car.singleCar[0],
-    itemsInCart: state.cart.itemsInCart,
-    allOrders: state.order.allOrders,
-    userEmail: state.user.email,
-    orderByEmail: state.order.orderByEmail
+    itemsInCart: state.cart.itemsInCart
   }
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({
