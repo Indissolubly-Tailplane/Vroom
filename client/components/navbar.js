@@ -32,6 +32,11 @@ const Navbar = ({handleClick, isLoggedIn, UpdateCart, isAdmin}) => (
           <Link to="/AdminAllOrders">All Orders</Link>
         </Menu.Item>
       ) : null}
+      {isAdmin ? (
+        <Menu.Item>
+          <Link to="/Users">All Users</Link>
+        </Menu.Item>
+      ) : null}
       <div className="right menu">
         <Menu.Item>
           <Link to="/Signup">Sign Up</Link>
