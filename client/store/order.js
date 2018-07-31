@@ -35,7 +35,6 @@ export const updateUserOrder = (id, data) => async dispatch => {
   }
 }
 
- 
 export const fetchAllOrders = () => async dispatch => {
   try {
     const allOrders = await axios.get('/api/orders')
@@ -45,7 +44,6 @@ export const fetchAllOrders = () => async dispatch => {
   }
 }
 
-
 // export const updateOrderedCars = (email,carId) => async dispatch => {
 //   const update = {orderId: , carId: carAndOrderID.carId};
 //   try {
@@ -54,7 +52,6 @@ export const fetchAllOrders = () => async dispatch => {
 //     console.log(err)
 //   }
 // }
-
 
 export const fetchOrder = id => async dispatch => {
   try {
