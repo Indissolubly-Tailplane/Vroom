@@ -74,7 +74,7 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
-   let action = dispatch(getUserLogin(res.data))
+  let action = dispatch(getUserLogin(res.data))
     history.push('/home')
     return action.loggedInUser;
   } catch (dispatchOrHistoryErr) {
@@ -84,7 +84,6 @@ export const auth = (email, password, method) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
-  window.sessionStorage.clear()
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
