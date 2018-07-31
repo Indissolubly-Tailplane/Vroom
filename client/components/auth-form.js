@@ -5,6 +5,7 @@ import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
 import Footer from './Footer'
 import axios from 'axios'
+import {UpdateItemsInCart, fetchCart} from '../store/cart'
 
 /**
  * COMPONENT
@@ -58,10 +59,12 @@ const AuthForm = props => {
  *   can stay DRY with interfaces that are very similar to each other!
  */
 const mapLogin = state => {
+  console.log("STATE: ", state)
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
+    // userId: state.user.id
   }
 }
 
@@ -73,29 +76,26 @@ const mapSignup = state => {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    async handleSubmit(evt) {
+    handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      window.sessionStorage.clear()
-      let {data} = await axios.get('/api/carts/1');
-      let carsId = data.map((thisCart => thisCart.carId))
-
-      Promise.all(carsId.map(car => axios.get(`/api/cars/${car}`))).then((carsData) => {
-        let carsInCart = carsData.map((car) => car.data[0])
-        carsInCart.forEach((car) => window.sessionStorage.setItem(
-          `item${window.sessionStorage.length + 1}`,
-          JSON.stringify(car)
-        ))
-        console.log('CARS IN CART: ', carsInCart);
-      })
       dispatch(auth(email, password, formName))
+      window.sessionStorage.clear()
+
+      console.log("RUN FETCH CART")
+      dispatch(fetchCart());
+      dispatch(UpdateItemsInCart());
+      console.log("FETCH CART RAN")
+
     }
   }
 }
+
+
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
