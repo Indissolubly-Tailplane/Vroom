@@ -44,6 +44,14 @@ export const fetchUser = id => async dispatch => {
   }
 }
 
+export const deleteUser = userId => async dispatch => {
+  try {
+    await axios.delete(`api/users/${userId}`)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')

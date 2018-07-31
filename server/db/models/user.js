@@ -26,10 +26,10 @@ const User = db.define('user', {
       isEmail: true
     }
   },
-  adminStatus: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
-  },
+  // adminStatus: {
+  //   type: Sequelize.BOOLEAN,
+  //   defaultValue: false
+  // },
   password: {
     type: Sequelize.STRING,
     get() {

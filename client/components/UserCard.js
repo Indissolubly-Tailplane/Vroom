@@ -1,27 +1,33 @@
 import React, {Component} from 'react'
-import {fetchUser} from '../store/user'
+import {fetchUser, deleteUser} from '../store/user'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Grid, Image, Icon, Label, Menu, Table, Button} from 'semantic-ui-react'
 
 class UserCard extends Component {
+  constructor(props) {
+    super(props)
+    this.handleDelete = this.handleDelete.bind(this)
+  }
   componentDidMount() {
     this.props.loadOneUser()
   }
-
+  handleDelete() {
+    this.props.deleteUser(Number(this.props.singleUser.id))
+  }
   render() {
-    console.log('this.props.singleUser: ', this.props.singleUser)
     if (!this.props.singleUser) return <div>Loading...</div>
     const singleUser = this.props.singleUser
 
     return (
       <Table celled padded>
-        {/* <Table.Header>
+        <Table.Header>
           <Table.Row>
             <Table.HeaderCell singleLine>Name</Table.HeaderCell>
             <Table.HeaderCell>E-mail</Table.HeaderCell>
             <Table.HeaderCell>Admin Status</Table.HeaderCell>
           </Table.Row>
-        </Table.Header> */}
+        </Table.Header>
 
         <Table.Body>
           <Table.Row>
@@ -39,14 +45,16 @@ class UserCard extends Component {
 
         <Table.Footer fullWidth>
           <Table.Row>
-            <Table.HeaderCell />
             <Table.HeaderCell colSpan="4">
-              <Button size="small" color="red">
-                Remove User
-              </Button>
-              <Button size="small" color="blue">
+              <Link to="/admin">
+                <Button size="small" color="red" onClick={this.handleDelete}>
+                  Remove User
+                </Button>
+              </Link>
+
+              {/* <Button size="small" color="blue">
                 Make Admin
-              </Button>
+              </Button> */}
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
@@ -61,6 +69,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadOneUser: () => {
     dispatch(fetchUser(ownProps.match.params.id))
+  },
+  deleteUser: userId => {
+    dispatch(deleteUser(userId))
   }
 })
 
