@@ -22,9 +22,10 @@ export function UpdateItemsInCart () {
 const createdOrder = order => ({type: CREATED_ORDER, order})
 
 // THUNK CREATOR
-export const postOrderToDb = (orderEmail) => async dispatch => {
+export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     try {
         const {data} = await axios.post('/api/orders', {email: orderEmail})
+        await Promise.all(arrayOfCarIds.map(carId =>  axios.post(`api/orders/update/${data.id}`,{carId:carId})))
         dispatch(createdOrder(data))
     } catch (err) {
         console.log(err)

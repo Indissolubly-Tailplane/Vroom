@@ -68,7 +68,7 @@ router.post(
   '/',
   asyncHandler(async (req, res, next) => {
     const newOrder = await Order.create(req.body)
-    res.json(`Order ${newOrder.id} has been created!`)
+    res.json(newOrder)
   })
 )
 
@@ -81,10 +81,10 @@ router.put(
     res.json(`Order ${orderId} has been updated!`)
   })
 )
-router.post('/update', asyncHandler(async(req,res,next) => {
-  const orderToUpdate = await Order.findById(req.body.orderId);
-  // const setCarsToOrder = await Promise.all(req.body.cars.map(car => orderToUpdate.setCars(car,{car.id})));
-  req.body.cars.map(async car => await orderToUpdate.setCars(car, {car.id}));
+router.post('/update/:orderId', asyncHandler(async(req,res,next) => {
+  const orderId = req.params.orderId
+  const orderToUpdate = await Order.findById(orderId);
+  await orderToUpdate.setCars(req.body.carId);
   res.send(`Items updated successfully in order ${orderToUpdate.id}`)
 }))
 

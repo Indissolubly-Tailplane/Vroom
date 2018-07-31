@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import { connect } from 'react-redux';
 import {postOrderToDb, UpdateItemsInCart} from '../store/cart'
+// import { updateOrderedCars } from '../store/order'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -14,6 +15,15 @@ class CheckoutForm extends Component {
     }
     this.submit = this.submit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.getArrayOfCarsId = this.getArrayOfCarsId.bind(this);
+
+  }
+
+  getArrayOfCarsId(){
+    let cars = Object.entries(window.sessionStorage).map(car =>
+      JSON.parse(car[1]).id
+    )
+    return cars
   }
 
   async submit(ev) {
@@ -31,7 +41,8 @@ class CheckoutForm extends Component {
         });
         if (response.ok) {
           this.setState({paymentSuccess: true})
-          this.props.postOrderToDb(this.state.email);
+          const arrayOfCarIds = this.getArrayOfCarsId();
+          this.props.postOrderToDb(this.state.email, arrayOfCarIds);
           window.sessionStorage.clear();
           this.props.UpdateItemsInCart();
           this.props.history.push('/confirmation')
@@ -128,12 +139,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    postOrderToDb: orderEmail => {
-      dispatch(postOrderToDb(orderEmail))
+    postOrderToDb: (orderEmail,arrayOfCarIds) => {
+      dispatch(postOrderToDb(orderEmail,arrayOfCarIds))
     },
     UpdateItemsInCart: () => {
       dispatch(UpdateItemsInCart())
-    }
+    },
   })
 
 const StripeComponent = injectStripe(CheckoutForm);

@@ -12,6 +12,7 @@ const initialState = {
 const getAllOrders = allOrders => ({type: GET_ALL_ORDERS, allOrders})
 const getOrder = singleOrder => ({type: GET_ORDER, singleOrder})
 
+ 
 export const fetchAllOrders = () => async dispatch => {
   try {
     const allOrders = await axios.get('/api/orders')
@@ -20,6 +21,17 @@ export const fetchAllOrders = () => async dispatch => {
     console.log(err)
   }
 }
+
+
+// export const updateOrderedCars = (email,carId) => async dispatch => {
+//   const update = {orderId: , carId: carAndOrderID.carId};
+//   try {
+//     await axios.post('/api/orders/update', update)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
 
 export const fetchOrder = id => async dispatch => {
   try {
