@@ -177,10 +177,37 @@ const newCars = [
   }
 ]
 
+const newCart = [
+  {
+    userId: 1,
+    carId: 2
+  },
+  {
+    userId: 1,
+    carId: 1
+  },
+  {
+    userId: 1,
+    carId: 4
+  },
+  {
+    userId: 3,
+    carId: 2
+  },
+  {
+    userId: 3,
+    carId: 2
+  },
+  {
+    userId: 2,
+    carId: 5
+  },
+]
+
 const seed = () =>
   Promise.all(newUsers.map(user => User.create(user))).then(() =>
-    Promise.all(newCars.map(car => Car.create(car)))
-  )
+    Promise.all(newCars.map(car => Car.create(car)))).then(() =>
+    Promise.all(newCart.map(cart => Cart.create(cart))))
 
 const main = () => {
   console.log('Syncing db...')
