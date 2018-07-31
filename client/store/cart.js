@@ -33,7 +33,7 @@ export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     }
 }
 
-export const fetchCart = (user) => async (dispatch, getState) => {
+export const fetchCart = (user) => async (dispatch) => {
   console.log("FETCH CART STARTED RUNNING")
   console.log("USER IN FETCHCART: ", user);
   let {data} = await axios.get(`/api/carts/${user.id}`);
@@ -49,6 +49,39 @@ export const fetchCart = (user) => async (dispatch, getState) => {
     dispatch(UpdateItemsInCart());
   })
   console.log("FETCH CART FINISHED RUNNING")
+}
+
+export const postCartToDb = (id) => async (dispatch) => {
+    console.log('POST CART TO DB STARTED');
+    console.log('USER ID: ', id)
+    let carIds = Object.entries(window.sessionStorage).map((car) => {
+      console.log('CAR IN SESSION: ', car)
+      return JSON.parse(car[1]).id
+    }
+    )
+    console.log('CAR IDS: ', carIds)
+    let carsWithUserId = carIds.map((car) => {
+      return {
+        carId: car,
+        userId: id
+      }
+    })
+    try {
+      let deletedCartAction = await axios.delete(`/api/carts/${id}`);
+      console.log('DELETED CARTS')
+    } catch (err) {
+      console.log('ERROR')
+      console.log(err)
+    }
+
+    try {
+      let {data} = await axios.post(`/api/carts/`, carsWithUserId);
+      console.log('ADDED CARTS')
+      window.sessionStorage.clear()
+      dispatch(UpdateItemsInCart());
+    } catch (err) {
+      console.log(err);
+    }
 }
 
 const cart = (state = initialState , action) => {

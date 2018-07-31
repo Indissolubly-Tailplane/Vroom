@@ -3,27 +3,34 @@ const {Car} = require('../db/models')
 const {Cart} = require('../db/models')
 const asyncHandler = require('express-async-handler');
 
-//get cars by user Id
+//get carts by user Id
 
 router.get('/:userId', asyncHandler(async(req, res, next) => {
-  const userId = req.params.userId
+  const userId = req.params.userId;
   const cart = await Cart.findAll({
     where: {
       userId
     }
   })
-  res.send(cart);
+  res.status(201).json(cart);
 }))
 
-// router.post("/charge", async (req, res) => {
-//     let {status} = await stripe.charges.create({
-//       amount: req.body.purchaseTotal,
-//       currency: "usd",
-//       description: "An example charge",
-//       source: req.body.tokenId
-//     });
-//     // ALSO SEND ORDER INFORMATION TO DB
-//     res.json({status});
-// });
+//delete carts by user Id
+
+router.delete('/:userId', asyncHandler(async(req, res, next) => {
+  const userId = req.params.userId;
+  const cart = await Cart.destroy({
+    where: {
+      userId
+    }
+  })
+  res.status(201).json(cart);
+}))
+
+router.post('/', asyncHandler(async(req,res,next) => {
+  const userId = req.params.userId;
+  const cart = await Cart.bulkCreate(req.body)
+  res.status(200).json(cart);
+}))
 
 module.exports = router
