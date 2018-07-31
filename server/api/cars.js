@@ -17,7 +17,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 router.get('/:id', asyncHandler(async (req,res,next) => {
   const carId = req.params.id;
-  const car = await Car.findAll({where: {id:carId}})
+  const car = await Car.findById(carId)
   res.json(car);
 }))
 
@@ -32,6 +32,12 @@ router.post("/charge", async (req, res) => {
     res.json({status});
 });
 
+router.put('/:id', asyncHandler(async (req, res, next) => {
+  const carId = req.params.id;
+  const car = await Car.findById(carId);
+  await car.update({quantity: car.quantity -1})
+  res.json(car);
+}))
 
 //get cars by user Id
 
