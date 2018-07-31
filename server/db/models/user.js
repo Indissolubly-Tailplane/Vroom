@@ -36,6 +36,10 @@ const User = db.define('user', {
       return () => this.getDataValue('password')
     }
   },
+  adminStatus: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   salt: {
     type: Sequelize.STRING,
     get() {
