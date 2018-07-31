@@ -15,6 +15,8 @@ class UserCard extends Component {
     this.props.deleteUser(Number(this.props.singleUser.id))
   }
   render() {
+    console.log('this.props.singleUser: ', this.props.singleUser)
+
     if (!this.props.singleUser) return <div>Loading...</div>
     const singleUser = this.props.singleUser
     return (
@@ -32,7 +34,7 @@ class UserCard extends Component {
               {singleUser.firstName} {singleUser.lastName}
             </Table.Cell>
             <Table.Cell>{singleUser.email}</Table.Cell>
-            {singleUser.adminStatus ? (
+            {singleUser.adminStatus === true ? (
               <Table.Cell> This user is an admin </Table.Cell>
             ) : (
               <Table.Cell> This user is NOT an admin </Table.Cell>
@@ -58,6 +60,7 @@ class UserCard extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
+  console.log('state.user.singleUser[0]', state.user.singleUser[0])
   return {singleUser: state.user.singleUser[0]}
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({

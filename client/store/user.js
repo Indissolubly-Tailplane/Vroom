@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GET_ALL_USERS = 'GET_ALL_USERS'
 const GET_USER = 'GET_USER'
+const GET_USER_LOGIN = 'GET_USER_LOGIN'
 const REMOVE_USER = 'REMOVE_USER'
 
 /**
@@ -14,6 +15,7 @@ const REMOVE_USER = 'REMOVE_USER'
 const initialState = {
   allUsers: [],
   singleUser: {},
+  loggedInUser: {},
   defaultUser: {}
 }
 
@@ -23,6 +25,7 @@ const initialState = {
 
 const getAllUsers = allUsers => ({type: GET_ALL_USERS, allUsers})
 const getUser = singleUser => ({type: GET_USER, singleUser})
+const getUserLogin = loggedInUser => ({type: GET_USER_LOGIN, loggedInUser})
 const removeUser = () => ({type: REMOVE_USER})
 
 /**
@@ -38,8 +41,8 @@ export const fetchAllUsers = () => async dispatch => {
 }
 export const fetchUser = id => async dispatch => {
   try {
-    const user = await axios.get(`/api/users/${id}`)
-    dispatch(getUser(user.data))
+    const singleUser = await axios.get(`/api/users/${id}`)
+    dispatch(getUser(singleUser.data))
   } catch (err) {
     console.log(err)
   }
@@ -55,7 +58,7 @@ export const deleteUser = userId => async dispatch => {
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    dispatch(getUser(res.data || initialState.defaultUser))
+    dispatch(getUserLogin(res.data || initialState.defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -66,11 +69,11 @@ export const auth = (email, password, method) => async dispatch => {
   try {
     res = await axios.post(`/auth/${method}`, {email, password})
   } catch (authError) {
-    return dispatch(getUser({error: authError}))
+    return dispatch(getUserLogin({error: authError}))
   }
 
   try {
-    dispatch(getUser(res.data))
+    dispatch(getUserLogin(res.data))
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
@@ -98,6 +101,8 @@ export default function(state = initialState, action) {
         ...state,
         allUsers: action.allUsers
       }
+    case GET_USER_LOGIN:
+      return action.loggedInUser
     case GET_USER:
       return {
         ...state,
