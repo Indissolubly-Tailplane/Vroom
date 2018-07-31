@@ -54,20 +54,22 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Users Orders</h2>
-        {this.props.orderByEmail.length < 0 ? (
-          <div>
-            <h2>None</h2>
-          </div>
-        ) : (
-          <div>
-            {this.props.orderByEmail.map(myOrder => (
-              <OrderItem key={myOrder.id} order={myOrder} />
-            ))}
-          </div>
-        )}
-      </div>
+      <center>
+        <div>
+          <h3>Previous Orders</h3>
+          {this.props.orderByEmail.length === 0 ? (
+            <div>
+              <h3>No Past Orders</h3>
+            </div>
+          ) : (
+            <div>
+              {this.props.orderByEmail.map(myOrder => (
+                <OrderItem key={myOrder.id} order={myOrder} />
+              ))}
+            </div>
+          )}
+        </div>
+      </center>
     )
   }
 }
