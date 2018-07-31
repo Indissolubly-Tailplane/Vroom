@@ -10,7 +10,7 @@ const Cart = require('./cart')
 // User.belongsToMany(Car, {through: 'cart'})
 
 Cart.hasMany(User)
-Car.hasMany(Car)
+Cart.hasMany(Car)
 
 Car.belongsToMany(Order, {through: 'orderedCars'})
 Order.belongsToMany(Car, {through: 'orderedCars'})
