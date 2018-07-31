@@ -12,6 +12,8 @@ import CarCard from './components/CarCard'
 import Confirmation from './components/confirmation'
 import Checkout from './components/Checkout'
 import UserProfile from './components/userProfile'
+import GuestProfile from './components/guestProfile'
+import AdminAllOrders from './components/AdminAllOrders'
 
 /**
  * COMPONENT
@@ -35,7 +37,13 @@ class Routes extends Component {
         <Route exact path="/cart" component={cart} />
         <Route exact path="/confirmation" component={Confirmation} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/userProfile" component={UserProfile} />
+        <Route exact path="/adminAllOrders" component={AdminAllOrders} />
+        <Route
+          exact
+          path="/userProfile"
+          render={() => <UserProfile user={this.props} />}
+        />
+        <Route exact path="/guestProfile" component={GuestProfile} />
 
         {isLoggedIn && (
           <Switch>
@@ -57,7 +65,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    user: state.user
   }
 }
 

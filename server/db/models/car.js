@@ -34,6 +34,10 @@ const Car = db.define('car', {
   year: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  limitedEdition: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

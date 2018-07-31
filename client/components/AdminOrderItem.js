@@ -10,8 +10,7 @@
 import React from 'react'
 import {Header, Image, Table, Icon} from 'semantic-ui-react'
 
-const OrderItem = props => {
-  console.log('orderItem: ', props)
+const AdminOrderItem = props => {
   const numberWithCommas = x => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
@@ -26,13 +25,18 @@ const OrderItem = props => {
 
   let total = getTotal()
 
+  const handleSubmit = (id, data) => {
+    props.updateOrder(id, data)
+  }
+
   return (
     <center>
       <Table compact id="carTable">
         <Table.Header>
           <Table.Row textAlign="left">
             <Table.HeaderCell>
-              Order Reference #{props.order.id}
+              Order Reference #{props.order.id} - Purchased by{' '}
+              {props.order.email}
             </Table.HeaderCell>
             <Table.HeaderCell width={2}>Year</Table.HeaderCell>
             <Table.HeaderCell width={2}>Color</Table.HeaderCell>
@@ -66,56 +70,39 @@ const OrderItem = props => {
               </Table.HeaderCell>
             ) : (
               <Table.HeaderCell>
-                Status: Order Will Be Shipped Shortly
+                Status: Order Has Not Been Shipped
               </Table.HeaderCell>
             )}
-            <Table.HeaderCell />
+            <Table.HeaderCell>
+              {props.order.shipped === false ? (
+                <button
+                  className="ui blue button"
+                  type="button"
+                  onClick={() =>
+                    handleSubmit(props.order.id, !props.order.shipped)
+                  }
+                >
+                  Ship Order
+                </button>
+              ) : (
+                <button
+                  className="ui blue button"
+                  type="button"
+                  onClick={() =>
+                    handleSubmit(props.order.id, !props.order.shipped)
+                  }
+                >
+                  Cancel Shipping
+                </button>
+              )}
+            </Table.HeaderCell>
             <Table.HeaderCell>Total Price:</Table.HeaderCell>
             <Table.HeaderCell>${numberWithCommas(total)}</Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
       </Table>
     </center>
-    // <Table celled>
-    //   <Table.Header>
-    //     <Table.Row textAlign="center">
-    //       <Table.HeaderCell>Past Orders</Table.HeaderCell>
-    //       <Table.HeaderCell>Car Model</Table.HeaderCell>
-    //       <Table.HeaderCell>Past Orders</Table.HeaderCell>
-    //       <Table.HeaderCell>Shipped</Table.HeaderCell>
-    //     </Table.Row>
-    //   </Table.Header>
-
-    //   <Table.Body>
-    //     <Table.Row textAlign="center">
-    //       <Table.Cell>
-    //         <Header as="h4" image>
-    //           {props.order.cars.map(car => (
-    //             <div>
-    //               <Table.Row textAlign="center">
-    //                 <Image
-    //                   key={car.id}
-    //                   src={car.image}
-    //                   rounded
-    //                   height="100px"
-    //                   width="100px"
-    //                 />
-    //               </Table.Row>
-    //               <Table.Cell>
-    //                 <Table.Cell>
-    //                   {car.make}, {car.model}
-    //                 </Table.Cell>
-    //               </Table.Cell>
-    //             </div>
-    //           ))}
-    //         </Header>
-    //       </Table.Cell>
-    //       <Table.Cell>ORDER: #{props.order.id}</Table.Cell>
-    //       <Table.Cell>{props.order.shipped.toString()}</Table.Cell>
-    //     </Table.Row>
-    //   </Table.Body>
-    // </Table>
   )
 }
 
-export default OrderItem
+export default AdminOrderItem
