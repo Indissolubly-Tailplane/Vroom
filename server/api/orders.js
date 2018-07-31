@@ -76,7 +76,7 @@ router.post(
   '/',
   asyncHandler(async (req, res, next) => {
     const newOrder = await Order.create(req.body)
-    res.json(`Order ${newOrder.id} has been created!`)
+    res.json(newOrder)
   })
 )
 
@@ -89,4 +89,11 @@ router.put(
     res.json(`Order ${orderId} has been updated!`)
   })
 )
+router.post('/update/:orderId', asyncHandler(async(req,res,next) => {
+  const orderId = req.params.orderId
+  const orderToUpdate = await Order.findById(orderId);
+  await orderToUpdate.setCars(req.body.carId);
+  res.send(`Items updated successfully in order ${orderToUpdate.id}`)
+}))
+
 module.exports = router

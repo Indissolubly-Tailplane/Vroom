@@ -11,6 +11,7 @@ const Order = require('./order')
 Car.belongsToMany(Order, {through: 'orderedCars'})
 Order.belongsToMany(Car, {through: 'orderedCars'})
 
+
 // User.belongsToMany(Order, {through: 'usersOrders'})
 // Order.belongsToMany(User, {through: 'usersOrders'})
 
