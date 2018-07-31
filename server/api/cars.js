@@ -16,8 +16,9 @@ router.get('/', asyncHandler(async (req, res, next) => {
 //gets car by id
 
 router.get('/:id', asyncHandler(async (req,res,next) => {
+  console.log('hereeee')
   const carId = req.params.id;
-  const car = await Car.findById(carId)
+  const car = await Car.findAll({where:{id:carId}})
   res.json(car);
 }))
 
