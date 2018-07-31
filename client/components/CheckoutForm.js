@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import { connect } from 'react-redux';
-import {postOrderToDb} from '../store/cart'
+import {postOrderToDb, UpdateItemsInCart} from '../store/cart'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -31,13 +31,13 @@ class CheckoutForm extends Component {
         });
         if (response.ok) {
           this.setState({paymentSuccess: true})
-          console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
           this.props.postOrderToDb(this.state.email);
           window.sessionStorage.clear();
+          this.props.UpdateItemsInCart();
+          this.props.history.push('/confirmation')
         }
       } else {
         this.setState({paymentSuccess: false})
-        console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
       }
     } catch (err) {
       console.log(err);
@@ -109,13 +109,13 @@ class CheckoutForm extends Component {
 
           {
             this.state.paymentSuccess !== null ? (
-              this.state.paymentSucess ? (
+              this.state.paymentSuccess ? (
                 <h1>Payment Successful</h1>
               ) : (
-                <h2>Payment Unsuccessful</h2>
+                <h2>Sorry your credentials seem to be invalid. Please try again.</h2>
               )
             ) : (
-              <h1>payment success : null </h1>
+              <h1>Get ready to make the best decision of your life...</h1>
             )
           }
       </div>
@@ -130,6 +130,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     postOrderToDb: orderEmail => {
       dispatch(postOrderToDb(orderEmail))
+    },
+    UpdateItemsInCart: () => {
+      dispatch(UpdateItemsInCart())
     }
   })
 
