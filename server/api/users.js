@@ -16,7 +16,7 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const userId = req.params.id
     const user = await User.findAll({where: {id: userId}})
-    res.json(user)
+    res.json(user[0])
   })
 )
 router.delete('/:id', async (req, res, next) => {

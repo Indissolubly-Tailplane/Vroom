@@ -19,6 +19,7 @@ class UserCard extends Component {
 
     if (!this.props.singleUser) return <div>Loading...</div>
     const singleUser = this.props.singleUser
+
     return (
       <Table celled padded>
         <Table.Header>
@@ -50,8 +51,8 @@ class UserCard extends Component {
                 </Button>
               </Link>
               {/* <Button size="small" color="blue">
-                Make Admin
-              </Button> */}
+              Make Admin
+            </Button> */}
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
@@ -60,8 +61,8 @@ class UserCard extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  console.log('state.user.singleUser[0]', state.user.singleUser[0])
-  return {singleUser: state.user.singleUser[0]}
+  // console.log('state.user.singleUser[0]', state.user.singleUser[0])
+  return {singleUser: state.user.singleUser}
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({
   loadOneUser: () => {
