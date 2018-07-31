@@ -10,25 +10,25 @@ const initialState = {
 
 // ACTION CREATORS
 
- export function UpdateItemsInCart () {
-     const newStore = window.sessionStorage.length;
-     return {
-     type: UPDATE_ITEMS_IN_CART,
-     itemsInCart: newStore
+export function UpdateItemsInCart () {
+    const newStore = window.sessionStorage.length;
+    return {
+    type: UPDATE_ITEMS_IN_CART,
+    itemsInCart: newStore
+  }
+}
+
+const createdOrder = order => ({type: CREATED_ORDER, order})
+
+// THUNK CREATOR
+export const postOrderToDb = (orderEmail) => async dispatch => {
+    try {
+        const {data} = await axios.post('/api/orders', {email: orderEmail})
+        dispatch(createdOrder(data))
+    } catch (err) {
+        console.log(err)
     }
- }
-
- const createdOrder = order => ({type: CREATED_ORDER, order})
-
- // THUNK CREATOR
- export const postOrderToDb = (orderEmail) => async dispatch => {
-     try {
-         const {data} = await axios.post('/api/orders', {email: orderEmail})
-         dispatch(createdOrder(data))
-     } catch (err) {
-         console.log(err)
-     }
- }
+}
 
 const cart = (state = initialState , action) => {
     switch(action.type){
