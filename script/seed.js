@@ -3,6 +3,7 @@
 const db = require('../server/db')
 const {User} = require('../server/db/models/')
 const {Car} = require('../server/db/models/')
+const {Cart} = require('../server/db/models/')
 
 const newUsers = [
   {
@@ -217,7 +218,7 @@ const newCart = [
   {
     userId: 2,
     carId: 5
-  },
+  }
 ]
 
 const seed = () =>
