@@ -76,20 +76,17 @@ const mapSignup = state => {
   }
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatch =  (dispatch) => {
   return {
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      let loggedInUser = await dispatch(auth(email, password, formName))
       window.sessionStorage.clear()
-
-      console.log("RUN FETCH CART")
-      dispatch(fetchCart());
-      dispatch(UpdateItemsInCart());
-      console.log("FETCH CART RAN")
+      console.log('LOGGED IN USER: ', loggedInUser)
+      dispatch(fetchCart(loggedInUser));
 
     }
   }

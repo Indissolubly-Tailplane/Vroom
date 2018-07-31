@@ -33,8 +33,10 @@ export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     }
 }
 
-export const fetchCart = () => async dispatch => {
-  let {data} = await axios.get(`/api/carts/1`);
+export const fetchCart = (user) => async (dispatch, getState) => {
+  console.log("FETCH CART STARTED RUNNING")
+  console.log("USER IN FETCHCART: ", user);
+  let {data} = await axios.get(`/api/carts/${user.id}`);
   let carsId = data.map((thisCart => thisCart.carId));
 
   Promise.all(carsId.map(car => axios.get(`/api/cars/${car}`))).then((carsData) => {
@@ -46,6 +48,7 @@ export const fetchCart = () => async dispatch => {
     console.log('CARS IN CART: ', window.sessionStorage);
     dispatch(UpdateItemsInCart());
   })
+  console.log("FETCH CART FINISHED RUNNING")
 }
 
 const cart = (state = initialState , action) => {

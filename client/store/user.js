@@ -65,6 +65,7 @@ export const me = () => async dispatch => {
 }
 
 export const auth = (email, password, method) => async dispatch => {
+  console.log("AUTH STARTED RUNNING");
   let res
   try {
     res = await axios.post(`/auth/${method}`, {email, password})
@@ -73,11 +74,13 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
-    dispatch(getUserLogin(res.data))
+   let action = dispatch(getUserLogin(res.data))
     history.push('/home')
+    return action.loggedInUser;
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
+  console.log("AUTH FINISHED RUNNING")
 }
 
 export const logout = () => async dispatch => {
