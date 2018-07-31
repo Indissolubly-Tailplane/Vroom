@@ -47,9 +47,9 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const orderId = req.params.orderId
     const order = await Order.findById(orderId)
-    const carsInOrder = await order.getCars();
+    const carsInOrder = await order.getCars()
     const final = {
-      order:  order,
+      order: order,
       carsInOrder: carsInOrder
     }
     res.json(final)
