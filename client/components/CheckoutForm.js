@@ -31,13 +31,12 @@ class CheckoutForm extends Component {
         });
         if (response.ok) {
           this.setState({paymentSuccess: true})
-          console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
           this.props.postOrderToDb(this.state.email);
           window.sessionStorage.clear();
+          this.props.history.push('/confirmation')
         }
       } else {
         this.setState({paymentSuccess: false})
-        console.log('PAYMENT SUCCESS: ', this.state.paymentSuccess)
       }
     } catch (err) {
       console.log(err);
@@ -49,6 +48,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    console.log('RENDER PAYMENT SUCCESS', this.state.paymentSuccess)
     let elementStyles = {
       base: {
         color: '#fff',
@@ -109,7 +109,7 @@ class CheckoutForm extends Component {
 
           {
             this.state.paymentSuccess !== null ? (
-              this.state.paymentSucess ? (
+              this.state.paymentSuccess ? (
                 <h1>Payment Successful</h1>
               ) : (
                 <h2>Payment Unsuccessful</h2>
