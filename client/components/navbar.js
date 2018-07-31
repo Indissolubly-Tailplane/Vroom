@@ -5,8 +5,9 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Menu} from 'semantic-ui-react'
 import CartNumber from './cartNumber'
+import {UpdateItemsInCart} from '../store/cart'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, UpdateCart}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
@@ -34,7 +35,14 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </Menu.Item>
         ) : (
           <Menu.Item>
-            <a onClick={handleClick}>Logout</a>
+            <a onClick={() => {
+              console.log('ON CLICK RAN')
+              handleClick()
+              UpdateCart()
+            }}
+            >
+            Logout
+            </a>
             {/* <Link to="/Login">Logout</Link> */}
           </Menu.Item>
         )}
@@ -60,6 +68,10 @@ const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout())
+    },
+    UpdateCart() {
+      console.log("I RAN")
+      dispatch(UpdateItemsInCart())
     }
   }
 }
