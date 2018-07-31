@@ -12,6 +12,7 @@ import CarCard from './components/CarCard'
 import Confirmation from './components/confirmation'
 import Checkout from './components/Checkout'
 import UserProfile from './components/userProfile'
+import GuestProfile from './components/guestProfile'
 
 /**
  * COMPONENT
@@ -40,6 +41,7 @@ class Routes extends Component {
           path="/userProfile"
           render={() => <UserProfile user={this.props} />}
         />
+        <Route exact path="/guestProfile" component={GuestProfile} />
 
         {isLoggedIn && (
           <Switch>
