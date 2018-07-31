@@ -13,6 +13,7 @@ import Confirmation from './components/confirmation'
 import Checkout from './components/Checkout'
 import UserProfile from './components/userProfile'
 import GuestProfile from './components/guestProfile'
+import AdminAllOrders from './components/AdminAllOrders'
 
 /**
  * COMPONENT
@@ -36,6 +37,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={cart} />
         <Route exact path="/confirmation" component={Confirmation} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/adminAllOrders" component={AdminAllOrders} />
         <Route
           exact
           path="/userProfile"
