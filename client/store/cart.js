@@ -5,7 +5,8 @@ const UPDATE_ITEMS_IN_CART = 'UPDATE_ITEMS_IN_CART'
 const CREATED_ORDER = 'CREATED_ORDER'
 const store = window.sessionStorage.length;
 const initialState = {
-    itemsInCart: store
+    itemsInCart: store,
+    orderId:null
 }
 
 // ACTION CREATORS
@@ -33,7 +34,9 @@ export const postOrderToDb = (orderEmail) => async dispatch => {
 const cart = (state = initialState , action) => {
     switch(action.type){
         case 'UPDATE_ITEMS_IN_CART':
-        return {itemsInCart: action.itemsInCart}
+        return {itemsInCart: action.itemsInCart};
+        case 'CREATED_ORDER': 
+        return {orderId: action.order.id}
         default:
         return state
     }

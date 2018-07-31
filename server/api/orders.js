@@ -81,4 +81,11 @@ router.put(
     res.json(`Order ${orderId} has been updated!`)
   })
 )
+router.post('/update', asyncHandler(async(req,res,next) => {
+  const orderToUpdate = await Order.findById(req.body.orderId);
+  // const setCarsToOrder = await Promise.all(req.body.cars.map(car => orderToUpdate.setCars(car,{car.id})));
+  req.body.cars.map(async car => await orderToUpdate.setCars(car, {car.id}));
+  res.send(`Items updated successfully in order ${orderToUpdate.id}`)
+}))
+
 module.exports = router
