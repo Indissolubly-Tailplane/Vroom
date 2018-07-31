@@ -6,7 +6,7 @@ import {logout} from '../store'
 import {Menu} from 'semantic-ui-react'
 import CartNumber from './cartNumber'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = ({handleClick, isLoggedIn, isAdmin}) => (
   <React.Fragment>
     <Menu>
       <Menu.Item>
@@ -22,8 +22,15 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/UserProfile">Profile</Link>
         </Menu.Item>
       ) : (
-        <div />
+        <Menu.Item>
+          <Link to="/GuestProfile">Profile</Link>
+        </Menu.Item>
       )}
+      {isAdmin ? (
+        <Menu.Item>
+          <Link to="/AdminAllOrders">All Orders</Link>
+        </Menu.Item>
+      ) : null}
       <div className="right menu">
         <Menu.Item>
           <Link to="/Signup">Sign Up</Link>
@@ -52,7 +59,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.adminStatus
   }
 }
 

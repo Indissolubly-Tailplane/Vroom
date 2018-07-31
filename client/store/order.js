@@ -5,6 +5,7 @@ import {CommentActions} from 'semantic-ui-react'
 const GET_ALL_ORDERS = 'GET_ALL_ORDERS'
 const GET_ORDER = 'GET_ORDER'
 const GET_ORDER_BY_EMAIL = 'GET_ORDER_BY_EMAIL'
+const UPDATE_ORDER = 'UPDATE_ORDER'
 
 const initialState = {
   allOrders: [],

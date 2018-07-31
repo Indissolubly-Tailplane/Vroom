@@ -5,7 +5,6 @@ import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
 import Footer from './Footer'
 import axios from 'axios'
-import cart from '../store/cart';
 
 /**
  * COMPONENT
@@ -93,13 +92,6 @@ const mapDispatch = dispatch => {
         ))
         console.log('CARS IN CART: ', carsInCart);
       })
-      // console.log(carsInCart);
-
-      // window.sessionStorage.setItem(
-      //   `item${window.sessionStorage.length + 1}`,
-      //   JSON.stringify(this.props.car)
-      // )
-
       dispatch(auth(email, password, formName))
     }
   }
