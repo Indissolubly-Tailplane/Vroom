@@ -33,15 +33,22 @@ router.get(
   })
 )
 
-//get order by Id
+//get order by Id with carsInOrder
 router.get(
   '/:orderId',
   asyncHandler(async (req, res, next) => {
     const orderId = req.params.orderId
     const order = await Order.findById(orderId)
-    res.json(order)
+    const carsInOrder = await order.getCars();
+    const final = {
+      order:  order,
+      carsInOrder: carsInOrder
+    }
+    res.json(final)
   })
 )
+
+//get cars by orderId
 
 // get order by email
 // router.get(
