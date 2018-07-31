@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 // import SingleCar from './SingleCar';
 import Footer from './Footer'
+import {Link} from 'react-router-dom'
 
 export default class Confirmation extends Component {
   constructor() {
@@ -13,7 +14,11 @@ export default class Confirmation extends Component {
         <center>
           <h3>Your Order Is Being Processed and Will Be Shipped Shortly</h3>
           <h3>Thank You For Using Vroom</h3>
-          <h3>Order Confirmation #8E3T34FU</h3>
+          <Link to="/UserProfile">
+            <button className="ui purple button" type="button">
+              View Order
+                </button>
+          </Link>
         </center>
         <div id="axis" className="one">
           <img

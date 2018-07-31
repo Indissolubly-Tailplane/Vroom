@@ -98,12 +98,6 @@ class Cart extends Component {
             </div>
             <div id="checkoutContainer">
               <h1>Total Price: ${numberWithCommas(this.props.cartTotal)}</h1>
-              <Link to={`/confirmation`}>
-                <button className="ui purple button" type="button">
-                  Order confirmation
-                </button>
-                </Link>
-
               <Link to="/checkout" className="ui blue button">
               Checkout
               </Link>
