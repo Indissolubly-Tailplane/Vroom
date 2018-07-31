@@ -1,16 +1,32 @@
 import history from '../history' // why this?
+import axios from 'axios'
 
 const UPDATE_ITEMS_IN_CART = 'UPDATE_ITEMS_IN_CART'
+const CREATED_ORDER = 'CREATED_ORDER'
 const store = window.sessionStorage.length
 const initialState = {
   itemsInCart: store
 }
+
+// ACTION CREATORS
 
 export function UpdateItemsInCart() {
   const newStore = window.sessionStorage.length
   return {
     type: UPDATE_ITEMS_IN_CART,
     itemsInCart: newStore
+  }
+}
+
+const createdOrder = order => ({type: CREATED_ORDER, order})
+
+// THUNK CREATOR
+export const postOrderToDb = orderEmail => async dispatch => {
+  try {
+    const {data} = await axios.post('/api/orders', {email: orderEmail})
+    dispatch(createdOrder(data))
+  } catch (err) {
+    console.log(err)
   }
 }
 

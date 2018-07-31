@@ -17,6 +17,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <Menu.Item>
         <Link to="/Cars">Cars</Link>
       </Menu.Item>
+      {isLoggedIn ? (
+        <Menu.Item>
+          <Link to="/UserProfile">Profile</Link>
+        </Menu.Item>
+      ) : (
+        <div />
+      )}
       <div className="right menu">
         <Menu.Item>
           <Link to="/Signup">Sign Up</Link>

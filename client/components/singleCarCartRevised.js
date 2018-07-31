@@ -11,9 +11,8 @@ import React, {Component} from 'react'
 import propTypes from 'prop-types' // typeCheck incomming props (raect error handling)
 import Cart from './Cart'
 import {Image} from 'semantic-ui-react'
-import { connect } from 'react-redux';
-import { UpdateItemsInCart } from '../store/cart'
-
+import {connect} from 'react-redux'
+import {UpdateItemsInCart} from '../store/cart'
 
 /**
  * COMPONENT
@@ -26,8 +25,8 @@ export class SingleCarCart extends Component {
 
   handleRemove = evt => {
     window.sessionStorage.removeItem(this.props.carKeyInlocalStorage)
-    this.props.calculateTotal();
-    this.props.UpdateItemsInCart();
+    this.props.calculateTotal()
+    this.props.UpdateItemsInCart()
   }
 
   render() {
@@ -73,8 +72,6 @@ const dispatchStateToProps = dispatch => ({
     dispatch(UpdateItemsInCart())
   }
 })
-
-
 
 SingleCarCart.propTypes = {
   car: propTypes.object.isRequired,
