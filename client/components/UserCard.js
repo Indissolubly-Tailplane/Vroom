@@ -42,7 +42,7 @@ class UserCard extends Component {
         <Table.Footer fullWidth>
           <Table.Row>
             <Table.HeaderCell colSpan="4">
-              <Link to="/admin">
+              <Link to="/users">
                 <Button size="small" color="red" onClick={this.handleDelete}>
                   Remove User
                 </Button>

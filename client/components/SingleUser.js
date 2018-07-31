@@ -25,7 +25,7 @@ export const SingleUser = props => {
       <Table.Footer fullWidth>
         <Table.Row>
           <Table.HeaderCell colSpan="4">
-            <Link to={`/admin/${id}`}>
+            <Link to={`/users/${id}`}>
               <Button size="small" color="blue">
                 Details
               </Button>
