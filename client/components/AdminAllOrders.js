@@ -28,11 +28,11 @@ class AdminAllOrders extends Component {
   }
 
   async updateOrder(id, data) {
-    console.log('data to use: ', id, data)
     await this.props.updateUserOrder(id, {
       shipped: data
     })
-    // await this.props.fetchAllOrders()
+    console.log(data)
+    await this.props.fetchAllOrders()
   }
 
   toQuery(email) {
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
     allOrders: state.order.allOrders,
     userEmail: state.user.email,
     orderByEmail: state.order.orderByEmail,
-    updateOrder: state.order.updateOrder
+    updatedOrder: state.order.updatedOrder
   }
 }
 
