@@ -60,6 +60,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    console.log('state', this.state);
     let elementStyles = {
       base: {
         color: '#fff',
@@ -135,7 +136,8 @@ class CheckoutForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  cartTotal: state.car.cartTotal
+  cartTotal: state.car.cartTotal,
+  orderId : state.orderId
 })
 
 const mapDispatchToProps = dispatch => ({

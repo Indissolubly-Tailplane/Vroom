@@ -18,15 +18,15 @@ export function UpdateItemsInCart () {
     itemsInCart: newStore
   }
 }
-
-const createdOrder = order => ({type: CREATED_ORDER, order})
+const createdOrder = order => ({type: CREATED_ORDER, order: order})
 
 // THUNK CREATOR
 export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     try {
         const {data} = await axios.post('/api/orders', {email: orderEmail})
         await Promise.all(arrayOfCarIds.map(carId =>  axios.post(`api/orders/update/${data.id}`,{carId:carId})))
-        dispatch(createdOrder(data))
+        await Promise.all(arrayOfCarIds.map(carId => axios.put(`/api/cars/${carId}`)))
+        // dispatch(updateOrderConfirmation(data))
     } catch (err) {
         console.log(err)
     }
@@ -37,7 +37,7 @@ const cart = (state = initialState , action) => {
         case 'UPDATE_ITEMS_IN_CART':
         return {itemsInCart: action.itemsInCart};
         case 'CREATED_ORDER': 
-        return {orderId: action.order.id}
+        return {...state, orderId: action.order.id}
         default:
         return state
     }
