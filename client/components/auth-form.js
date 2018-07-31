@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
 import Footer from './Footer'
+import axios from 'axios'
 
 /**
  * COMPONENT
@@ -74,12 +75,23 @@ const mapSignup = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
       window.sessionStorage.clear()
+      let {data} = await axios.get('/api/carts/1');
+      let carsId = data.map((thisCart => thisCart.carId))
+
+      Promise.all(carsId.map(car => axios.get(`/api/cars/${car}`))).then((carsData) => {
+        let carsInCart = carsData.map((car) => car.data[0])
+        carsInCart.forEach((car) => window.sessionStorage.setItem(
+          `item${window.sessionStorage.length + 1}`,
+          JSON.stringify(car)
+        ))
+        console.log('CARS IN CART: ', carsInCart);
+      })
       dispatch(auth(email, password, formName))
     }
   }

@@ -13,6 +13,8 @@ import Confirmation from './components/confirmation'
 import Checkout from './components/Checkout'
 import UserProfile from './components/userProfile'
 import GuestProfile from './components/guestProfile'
+import Users from './components/Users'
+import UserCard from './components/UserCard'
 import AdminAllOrders from './components/AdminAllOrders'
 
 /**
@@ -34,6 +36,8 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/cars/:id" component={CarCard} />
         <Route exact path="/cars" component={cars} />
+        <Route exact path="/users" component={Users} />
+        <Route exact path="/users/:id" component={UserCard} />
         <Route exact path="/cart" component={cart} />
         <Route exact path="/confirmation" component={Confirmation} />
         <Route exact path="/checkout" component={Checkout} />
