@@ -10,7 +10,8 @@ const UPDATE_ORDER = 'UPDATE_ORDER'
 const initialState = {
   allOrders: [],
   singleOrder: {},
-  orderByEmail: []
+  orderByEmail: [],
+  updatedOrder: {}
 }
 
 const getAllOrders = allOrders => ({type: GET_ALL_ORDERS, allOrders})
@@ -19,6 +20,20 @@ const getOrderByEmail = orderByEmail => ({
   type: GET_ORDER_BY_EMAIL,
   orderByEmail
 })
+const updateOrder = updatedOrder => ({
+  type: UPDATE_ORDER,
+  updatedOrder
+})
+
+export const updateUserOrder = (id, data) => async dispatch => {
+  try {
+    const orderToUpdate = await axios.put(`/api/orders/${id}`, data)
+    const order = orderToUpdate.data
+    dispatch(updateOrder(order))
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 export const fetchAllOrders = () => async dispatch => {
   try {
@@ -63,6 +78,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         orderByEmail: action.orderByEmail
+      }
+    case UPDATE_ORDER:
+      return {
+        ...state,
+        updatedOrder: action.updatedOrder
       }
     default:
       return state

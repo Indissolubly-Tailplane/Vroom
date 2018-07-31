@@ -6,41 +6,34 @@ import React, {Component} from 'react'
 // import {} from '../store/car'
 import {connect} from 'react-redux'
 import AdminOrderItem from './AdminOrderItem'
-import order, {fetchOrderByEmail, fetchAllOrders} from '../store/order'
+import order, {
+  fetchOrderByEmail,
+  fetchAllOrders,
+  updateUserOrder
+} from '../store/order'
 import {me} from '../store'
 // const queryString = require('query-string')
 import axios from 'axios'
 
 class AdminAllOrders extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       // usersOrders: {},
       // userEmail: {}
       // allOrders:
     }
-    // this.handleChange = this.handleChange.bind(this)
+    this.updateOrder = this.updateOrder.bind(this)
     // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  // handleChange(evt) {
-  //   this.setState({[evt.target.name]: evt.target.value})
-  //   console.log(this.state)
-  // }
-
-  // async handleSubmit(submitEvent) {
-  //   submitEvent.preventDefault()
-  //   const queryEmail = this.toQuery(this.state.userEmail)
-  //   console.log(queryEmail)
-  //   const userOrders = await this.props.fetchOrderByEmail(queryEmail)
-  //   console.log(userOrders)
-  //   this.setState({usersOrders: userOrders})
-  //   console.log(this.state)
-  //   // await this.props.addCampus(this.state)
-  //   // const campus = await this.props.fetchCampus()
-  // }
-
-  updateOrder(id) {}
+  async updateOrder(id, data) {
+    console.log('data to use: ', id, data)
+    await this.props.updateUserOrder(id, {
+      shipped: data
+    })
+    // await this.props.fetchAllOrders()
+  }
 
   toQuery(email) {
     if (email !== undefined) {
@@ -60,7 +53,6 @@ class AdminAllOrders extends Component {
 
   async componentDidMount() {
     const allOrders = await this.props.fetchAllOrders()
-    console.log(this.props)
   }
 
   render() {
@@ -91,7 +83,8 @@ const mapStateToProps = state => {
   return {
     allOrders: state.order.allOrders,
     userEmail: state.user.email,
-    orderByEmail: state.order.orderByEmail
+    orderByEmail: state.order.orderByEmail,
+    updateOrder: state.order.updateOrder
   }
 }
 
@@ -101,6 +94,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchAllOrders: () => {
     dispatch(fetchAllOrders())
+  },
+  updateUserOrder: (id, data) => {
+    dispatch(updateUserOrder(id, data))
   }
 })
 
