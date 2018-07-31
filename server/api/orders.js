@@ -6,14 +6,20 @@ const asyncHandler = require('express-async-handler')
 //get all orders
 
 router.get(
-  '/email', //cg@email.com search?email=cg%40email%2Ecom
+  '/email', //cg@email.com ?email=cg%40email%2Ecom
   asyncHandler(async (req, res, next) => {
     console.log('hello from Order api/orders')
+    console.log('req.query', req.query)
     const allOrders = await Order.findAll({
       where: {
-        email: req.body.email
+        email: req.query.email
         //req.query.email
-      }
+      },
+      include: [
+        {
+          model: Car
+        }
+      ]
     })
     console.log('req.query: ', req.query)
     res.json(allOrders)
@@ -35,15 +41,22 @@ router.get(
   })
 )
 
-//get order by Id
+//get order by Id with carsInOrder
 router.get(
   '/:orderId',
   asyncHandler(async (req, res, next) => {
     const orderId = req.params.orderId
     const order = await Order.findById(orderId)
-    res.json(order)
+    const carsInOrder = await order.getCars();
+    const final = {
+      order:  order,
+      carsInOrder: carsInOrder
+    }
+    res.json(final)
   })
 )
+
+//get cars by orderId
 
 // get order by email
 // router.get(

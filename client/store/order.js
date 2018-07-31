@@ -37,11 +37,9 @@ export const fetchOrder = id => async dispatch => {
   }
 }
 
-export const fetchOrderByEmail = () => async dispatch => {
+export const fetchOrderByEmail = email => async dispatch => {
   try {
-    const orderByEmail = await axios.get(`api/orders/email`, {
-      email: 'cg@email.com'
-    })
+    const orderByEmail = await axios.get(`api/orders/email/${email}`)
     dispatch(getOrderByEmail(orderByEmail.data))
   } catch (err) {
     console.log(err)

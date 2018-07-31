@@ -47,6 +47,7 @@ export const auth = (email, password, method) => async dispatch => {
 }
 
 export const logout = () => async dispatch => {
+  window.sessionStorage.clear();
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
