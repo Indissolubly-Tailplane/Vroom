@@ -3,28 +3,19 @@
   - carCard components
 */
 import React, {Component} from 'react'
-// import {} from '../store/car'
 import {connect} from 'react-redux'
 import AdminOrderItem from './AdminOrderItem'
-import order, {
+import {
   fetchOrderByEmail,
   fetchAllOrders,
   updateUserOrder
 } from '../store/order'
-import {me} from '../store'
-// const queryString = require('query-string')
-import axios from 'axios'
 
 class AdminAllOrders extends Component {
   constructor() {
     super()
-    this.state = {
-      // usersOrders: {},
-      // userEmail: {}
-      // allOrders:
-    }
+    this.state = {}
     this.updateOrder = this.updateOrder.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   async updateOrder(id, data) {
@@ -32,7 +23,6 @@ class AdminAllOrders extends Component {
     await this.props.updateUserOrder(id, {
       shipped: data
     })
-    // await this.props.fetchAllOrders()
   }
 
   toQuery(email) {

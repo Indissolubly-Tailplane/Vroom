@@ -1,4 +1,4 @@
-/*eslint-disable react/self-closing-comp*/
+/*eslint-disable react/self-closing-comp, no-nested-ternary*/
 
 import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
