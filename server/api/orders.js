@@ -8,12 +8,9 @@ const asyncHandler = require('express-async-handler')
 router.get(
   '/email', //cg@email.com ?email=cg%40email%2Ecom
   asyncHandler(async (req, res, next) => {
-    console.log('hello from Order api/orders')
-    console.log('req.query', req.query)
     const allOrders = await Order.findAll({
       where: {
         email: req.query.email
-        //req.query.email
       },
       include: [
         {
@@ -21,7 +18,6 @@ router.get(
         }
       ]
     })
-    console.log('req.query: ', req.query)
     res.json(allOrders)
   })
 )
@@ -29,7 +25,6 @@ router.get(
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    console.log('hello from Order api/orders')
     const allOrders = await Order.findAll({
       include: [
         {

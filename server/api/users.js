@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
 const asyncHandler = require('express-async-handler')
+
 //gets all users
 router.get(
   '/',
@@ -10,6 +11,7 @@ router.get(
     res.json(allUsers)
   })
 )
+
 //gets user by id
 router.get(
   '/:id',
