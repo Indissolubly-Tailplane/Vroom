@@ -47,7 +47,7 @@ export const fetchUser = id => async dispatch => {
     console.log(err)
   }
 }
-export const deleteUser = userId => async dispatch => {
+export const deleteUser = userId => async () => {
   try {
     await axios.delete(`api/users/${userId}`)
   } catch (err) {

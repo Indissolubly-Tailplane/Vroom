@@ -64,7 +64,6 @@ const mapLogin = state => {
     name: 'login',
     displayName: 'Login',
     error: state.user.error,
-    // userId: state.user.id
   }
 }
 

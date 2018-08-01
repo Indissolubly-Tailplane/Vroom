@@ -56,22 +56,6 @@ router.get(
   })
 )
 
-//get cars by orderId
-
-// get order by email
-// router.get(
-//   '/:email',
-//   asyncHandler(async (req, res, next) => {
-//     const userEmail = req.params.email
-//     const order = await Order.findAll({
-//       where: {
-//         email: userEmail
-//       }
-//     })
-//     res.send(order)
-//   })
-// )
-
 router.post(
   '/',
   asyncHandler(async (req, res, next) => {

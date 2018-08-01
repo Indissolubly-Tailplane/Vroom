@@ -3,13 +3,9 @@
   - carCard components
 */
 import React, {Component} from 'react'
-// import {} from '../store/car'
 import {connect} from 'react-redux'
 import OrderItem from './orderItem'
-import order, {fetchOrderByEmail, fetchAllOrders} from '../store/order'
-import {me} from '../store'
-// const queryString = require('query-string')
-import axios from 'axios'
+import {fetchOrderByEmail} from '../store/order'
 
 class UserProfile extends Component {
   constructor(props) {
@@ -39,17 +35,6 @@ class UserProfile extends Component {
   async componentDidMount() {
     const queryEmail = this.toQuery(this.props.user.user.email)
     const userOrders = await this.props.fetchOrderByEmail(queryEmail)
-    // await this.props.fetchAllOrders()
-    // await this.props.loadInitialData()
-    // const email = this.props.user
-    // if (email === undefined) {
-    //   console.log('undefined email')
-    // } else {
-    //   let queryEmail = toQuery(email)
-    //   let myOrders = this.props.fetchOrderByEmail(queryEmail)
-    //   console.log('email: ', queryEmail)
-    //   console.log(myOrders)
-    // }
   }
 
   render() {
@@ -86,39 +71,6 @@ const mapDispatchToProps = dispatch => ({
   fetchOrderByEmail: queryEmail => {
     dispatch(fetchOrderByEmail(queryEmail))
   }
-  // loadInitialData: () => {
-  //   dispatch(me())
-  // },
-  // fetchAllOrders: () => {
-  //   dispatch(fetchAllOrders())
-  // }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
-
-// Notes
-//   let queryEmail = toQuery(email)
-//   const myOrders = this.props.fetchOrderByEmail(queryEmail)
-//   console.log(myOrders)
-// }
-// let queryEmail = ''
-// if (email === undefined) {
-//   console.log('undefined email')
-// } else {
-//   let queryEmail = toQuery(email)
-//   let myOrders = this.props.fetchOrderByEmail(queryEmail)
-//   console.log('email: ', queryEmail)
-//   console.log(myOrders)
-// }
-// {
-//   email !== undefined
-//     ? (orders = this.props.orderByEmail(email))
-//     : (orders = '')
-// }
-// if (email === undefined) {
-//   return <h1>Loading...</h1>
-// } else {
-//   let orders = this.props.fetchOrderByEmail(toQuery(email))
-// }
-// console.log('this.props.orderByEmail', this.props.orderByEmail)
-// console.log('orders: ', this.orders)
