@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 import {updateTotal} from '../store/car'
 
 import React, {Component} from 'react'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux'
 // import SingleCar from './SingleCar';
 
 class Cart extends Component {
@@ -18,16 +18,34 @@ class Cart extends Component {
     super()
     this.state = {
       cartItems: 0,
+      canCheckout: true
     }
     this.handleRemoveInCart = this.handleRemoveInCart.bind(this)
-    this.calculateTotal = this. calculateTotal.bind(this)
+    this.calculateTotal = this.calculateTotal.bind(this)
   }
 
   componentDidMount() {
     this.setState({cartItems: window.sessionStorage.length})
     // convert price to Dollar Formar
+<<<<<<< HEAD
+    this.calculateTotal()
+=======
     this.calculateTotal();
+>>>>>>> origin
   }
+  // let totalPrice = 0
+  // let cars = Object.entries(window.sessionStorage).map(car =>
+  //   JSON.parse(car[1])
+  // )
+  // for (let i = 0; i < cars.length; i++) {
+  //   totalPrice += cars[i].price;
+  //   // this.props.updateTotal(totalPrice);
+  // }
+  // console.log('TOTAL PRICE:', totalPrice)
+  // this.props.updateTotal(totalPrice);
+  // console.log('CART TOTAL FROM PROPS:', this.props.cartTotal)
+  // // this.setState({cartTotal: totalPrice})
+  // // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
 
   handleRemoveInCart = evt => {
     this.setState({
@@ -41,12 +59,34 @@ class Cart extends Component {
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
+<<<<<<< HEAD
+      totalPrice += cars[i].price
+      // this.props.updateTotal(totalPrice);
+    }
+    // console.log('TOTAL PRICE:', totalPrice)
+    this.props.updateTotal(totalPrice)
+    // console.log('CART TOTAL FROM PROPS:', this.props.cartTotal)
+    // this.setState({cartTotal: totalPrice})
+    // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
+=======
       totalPrice += cars[i].price;
     }
     this.props.updateTotal(totalPrice);
+>>>>>>> origin
+  }
+
+  parseStore = () => {
+    // this.setState({cartItems: window.sessionStorage.length})
+    let cars = Object.entries(window.sessionStorage).map(
+      car => JSON.parse(car[1]).id
+    )
+    console.log(cars)
+    return new Set(cars).size !== cars.length
   }
 
   render() {
+    const canCheckout = this.parseStore()
+    console.log(canCheckout)
     const numberWithCommas = x => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
@@ -78,10 +118,16 @@ class Cart extends Component {
             </div>
             <div id="checkoutContainer">
               <h1>Total Price: ${numberWithCommas(this.props.cartTotal)}</h1>
-              <Link to="/checkout" className="ui blue button">
-              Checkout
-              </Link>
-
+              {canCheckout === false ? (
+                <Link to="/checkout" className="ui blue button">
+                  Checkout
+                </Link>
+              ) : (
+                <h3>
+                  Sorry, Only One Car of the same model, please remove
+                  duplicates
+                </h3>
+              )}
             </div>
           </center>
           <Footer />
@@ -97,10 +143,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateTotal: (total) => {
-      dispatch(updateTotal(total));
+    updateTotal: total => {
+      dispatch(updateTotal(total))
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
