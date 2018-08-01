@@ -7,7 +7,7 @@ const stripe = require("stripe")("pk_test_NIADJgaPnph0TGWHkcqwcW7V");
 //gets all cars
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  console.log('here!')
+  console.log('user ', req.user)
   const allCars = await Car.findAll({});
   res.json(allCars);
 }))
@@ -16,7 +16,6 @@ router.get('/', asyncHandler(async (req, res, next) => {
 //gets car by id
 
 router.get('/:id', asyncHandler(async (req,res,next) => {
-  console.log('hereeee')
   const carId = req.params.id;
   const car = await Car.findAll({where:{id:carId}})
   res.json(car);

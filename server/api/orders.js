@@ -8,8 +8,6 @@ const asyncHandler = require('express-async-handler')
 router.get(
   '/email', //cg@email.com ?email=cg%40email%2Ecom
   asyncHandler(async (req, res, next) => {
-    console.log('hello from Order api/orders')
-    console.log('req.query', req.query)
     const allOrders = await Order.findAll({
       where: {
         email: req.query.email
@@ -21,7 +19,6 @@ router.get(
         }
       ]
     })
-    console.log('req.query: ', req.query)
     res.json(allOrders)
   })
 )
@@ -29,17 +26,19 @@ router.get(
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    console.log('hello from Order api/orders')
-    const allOrders = await Order.findAll({
-      include: [
-        {
-          model: Car
-        }
-      ]
-    })
-    res.json(allOrders)
-  })
-)
+    if (req.user !== undefined && req.user.dataValues.adminStatus === true){
+      const allOrders = await Order.findAll({
+        include: [
+          {
+            model: Car
+          }
+        ]
+      })
+      res.json(allOrders)
+    } else {
+      res.send('You are not authorized!')
+    }
+  }))
 
 //get order by Id with carsInOrder
 router.get(
