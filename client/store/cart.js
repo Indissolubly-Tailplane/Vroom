@@ -24,10 +24,13 @@ const createdOrder = order => ({type: CREATED_ORDER, order: order})
 // THUNK CREATOR
 export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     try {
+        console.log("POST ORDER TO DB START")
         const {data} = await axios.post('/api/orders', {email: orderEmail})
         await Promise.all(arrayOfCarIds.map(carId =>  axios.post(`api/orders/update/${data.id}`,{carId:carId})))
-        await Promise.all(arrayOfCarIds.map(carId => axios.put(`/api/cars/${carId}`)))
+        let DONTUSE = await Promise.all(arrayOfCarIds.map(carId => axios.put(`/api/cars/${carId}`)))
         // dispatch(updateOrderConfirmation(data))
+        console.log("POST ORDER TO DB END")
+        return(DONTUSE)
     } catch (err) {
         console.log(err)
     }
