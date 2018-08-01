@@ -1,10 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {WSAEINVALIDPROVIDER} from 'constants'
 import {connect} from 'react-redux'
 
-/**
- * COMPONENT
- */
 export const CartNumber = (props) => (
       <div>
         <center>
@@ -18,6 +15,4 @@ const mapStateToProps = state => ({
   itemsInCart: state.cart.itemsInCart
 })
 
-
 export default connect (mapStateToProps,null)(CartNumber)
-

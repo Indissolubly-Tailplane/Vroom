@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import { connect } from 'react-redux';
 import {postOrderToDb, UpdateItemsInCart} from '../store/cart'
-// import { updateOrderedCars } from '../store/order'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -60,7 +59,6 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    console.log('state', this.state);
     let elementStyles = {
       base: {
         color: '#fff',

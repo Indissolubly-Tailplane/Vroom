@@ -1,7 +1,3 @@
-/* We need...
-  - Navbar
-  - carCard components
-*/
 import React, {Component} from 'react'
 import SingleCar from './SingleCar'
 import {fetchAllCars} from '../store/car'

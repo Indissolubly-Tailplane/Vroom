@@ -11,7 +11,6 @@ router.get(
     const allOrders = await Order.findAll({
       where: {
         email: req.query.email
-        //req.query.email
       },
       include: [
         {

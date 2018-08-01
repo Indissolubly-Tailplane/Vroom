@@ -1,12 +1,3 @@
-/* We need...
-  - Car name
-  - Image
-  - Info
-  - Quantity
-  - Edit
-  - Remove
-*/
-
 import React from 'react'
 import {Header, Image, Table, Icon} from 'semantic-ui-react'
 

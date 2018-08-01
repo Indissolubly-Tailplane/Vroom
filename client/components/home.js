@@ -1,6 +1,4 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import NavBar from './navbar'
+import React from 'react'
 import {connect} from 'react-redux'
 import Footer from './Footer'
 
@@ -51,14 +49,6 @@ const Home = ({isLoggedIn, name}) => {
                 />
                 Your browser does not support the video tag.
               </video>
-              {/* <div className="featured">
-                <img
-                  className="homeImageAlternate"
-                  src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2013/06/Screen-Shot-2013-06-03-at-12.28.40-PM.png"
-                  width="100%"
-                  height="50%"
-                />
-              </div> */}
             </div>
           </div>
           <Footer />

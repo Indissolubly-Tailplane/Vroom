@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {fetchUser, deleteUser} from '../store/user'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {Grid, Image, Icon, Label, Menu, Table, Button} from 'semantic-ui-react'
+import {Table, Button} from 'semantic-ui-react'
+
 class UserCard extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +16,6 @@ class UserCard extends Component {
     this.props.deleteUser(Number(this.props.singleUser.id))
   }
   render() {
-    console.log('this.props.singleUser: ', this.props.singleUser)
 
     if (!this.props.singleUser) return <div>Loading...</div>
     const singleUser = this.props.singleUser
@@ -50,9 +50,6 @@ class UserCard extends Component {
                   Remove User
                 </Button>
               </Link>
-              {/* <Button size="small" color="blue">
-              Make Admin
-            </Button> */}
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
@@ -60,8 +57,7 @@ class UserCard extends Component {
     )
   }
 }
-const mapStateToProps = (state, ownProps) => {
-  // console.log('state.user.singleUser[0]', state.user.singleUser[0])
+const mapStateToProps = (state) => {
   return {singleUser: state.user.singleUser}
 }
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -72,4 +68,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(deleteUser(userId))
   }
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(UserCard)

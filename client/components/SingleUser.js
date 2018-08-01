@@ -1,9 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import {Grid, Image, Icon, Label, Menu, Table, Button} from 'semantic-ui-react'
-/**
- * COMPONENT
- */
+import {Table, Button} from 'semantic-ui-react'
+
 export const SingleUser = props => {
   const {firstName, lastName, id, email} = props.user
   return (

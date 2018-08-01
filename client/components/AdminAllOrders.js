@@ -1,7 +1,3 @@
-/* We need...
-  - Navbar
-  - carCard components
-*/
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import AdminOrderItem from './AdminOrderItem'
@@ -19,7 +15,6 @@ class AdminAllOrders extends Component {
   }
 
   async updateOrder(id, data) {
-    console.log('data to use: ', id, data)
     await this.props.updateUserOrder(id, {
       shipped: data
     })

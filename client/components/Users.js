@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {SingleUser} from './SingleUser'
 import {fetchAllUsers} from '../store/user'
 import {connect} from 'react-redux'
+
 class Users extends Component {
   componentDidMount() {
     this.props.fetchAllUsers() //??

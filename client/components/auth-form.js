@@ -4,12 +4,8 @@ import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
 import Footer from './Footer'
-import axios from 'axios'
-import {UpdateItemsInCart, fetchCart} from '../store/cart'
+import {fetchCart} from '../store/cart'
 
-/**
- * COMPONENT
- */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
@@ -17,7 +13,6 @@ const AuthForm = props => {
     <center>
       <Image
         src="https://wallpaper-house.com/data/out/9/wallpaper2you_300629.jpg"
-        // size="big"
         verticalAlign="middle"
         centered
         className="ui fluid image"
@@ -59,7 +54,6 @@ const AuthForm = props => {
  *   can stay DRY with interfaces that are very similar to each other!
  */
 const mapLogin = state => {
-  console.log("STATE: ", state)
   return {
     name: 'login',
     displayName: 'Login',
