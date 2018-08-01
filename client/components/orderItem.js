@@ -76,45 +76,6 @@ const OrderItem = props => {
         </Table.Footer>
       </Table>
     </center>
-    // <Table celled>
-    //   <Table.Header>
-    //     <Table.Row textAlign="center">
-    //       <Table.HeaderCell>Past Orders</Table.HeaderCell>
-    //       <Table.HeaderCell>Car Model</Table.HeaderCell>
-    //       <Table.HeaderCell>Past Orders</Table.HeaderCell>
-    //       <Table.HeaderCell>Shipped</Table.HeaderCell>
-    //     </Table.Row>
-    //   </Table.Header>
-
-    //   <Table.Body>
-    //     <Table.Row textAlign="center">
-    //       <Table.Cell>
-    //         <Header as="h4" image>
-    //           {props.order.cars.map(car => (
-    //             <div>
-    //               <Table.Row textAlign="center">
-    //                 <Image
-    //                   key={car.id}
-    //                   src={car.image}
-    //                   rounded
-    //                   height="100px"
-    //                   width="100px"
-    //                 />
-    //               </Table.Row>
-    //               <Table.Cell>
-    //                 <Table.Cell>
-    //                   {car.make}, {car.model}
-    //                 </Table.Cell>
-    //               </Table.Cell>
-    //             </div>
-    //           ))}
-    //         </Header>
-    //       </Table.Cell>
-    //       <Table.Cell>ORDER: #{props.order.id}</Table.Cell>
-    //       <Table.Cell>{props.order.shipped.toString()}</Table.Cell>
-    //     </Table.Row>
-    //   </Table.Body>
-    // </Table>
   )
 }
 

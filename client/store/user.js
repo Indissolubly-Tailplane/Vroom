@@ -47,7 +47,7 @@ export const fetchUser = id => async dispatch => {
     console.log(err)
   }
 }
-export const deleteUser = userId => async dispatch => {
+export const deleteUser = userId => async () => {
   try {
     await axios.delete(`api/users/${userId}`)
   } catch (err) {
@@ -65,6 +65,7 @@ export const me = () => async dispatch => {
 }
 
 export const auth = (email, password, method) => async dispatch => {
+  console.log("AUTH STARTED RUNNING");
   let res
   try {
     res = await axios.post(`/auth/${method}`, {email, password})
@@ -73,15 +74,16 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
-    dispatch(getUserLogin(res.data))
+  let action = dispatch(getUserLogin(res.data))
     history.push('/home')
+    return action.loggedInUser;
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
+  console.log("AUTH FINISHED RUNNING")
 }
 
 export const logout = () => async dispatch => {
-  window.sessionStorage.clear()
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())

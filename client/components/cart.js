@@ -27,7 +27,11 @@ class Cart extends Component {
   componentDidMount() {
     this.setState({cartItems: window.sessionStorage.length})
     // convert price to Dollar Formar
+<<<<<<< HEAD
     this.calculateTotal()
+=======
+    this.calculateTotal();
+>>>>>>> origin
   }
   // let totalPrice = 0
   // let cars = Object.entries(window.sessionStorage).map(car =>
@@ -50,12 +54,12 @@ class Cart extends Component {
   }
 
   calculateTotal = () => {
-    // this.setState({cartItems: window.sessionStorage.length})
     let totalPrice = 0
     let cars = Object.entries(window.sessionStorage).map(car =>
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
+<<<<<<< HEAD
       totalPrice += cars[i].price
       // this.props.updateTotal(totalPrice);
     }
@@ -64,6 +68,11 @@ class Cart extends Component {
     // console.log('CART TOTAL FROM PROPS:', this.props.cartTotal)
     // this.setState({cartTotal: totalPrice})
     // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
+=======
+      totalPrice += cars[i].price;
+    }
+    this.props.updateTotal(totalPrice);
+>>>>>>> origin
   }
 
   parseStore = () => {

@@ -5,19 +5,15 @@ import {connect} from 'react-redux'
 /**
  * COMPONENT
  */
-export class CartNumber extends Component {
-
-  render() {
-    return (
+export const CartNumber = (props) => (
       <div>
         <center>
-          <span className="button__badge">{this.props.itemsInCart}</span>
+          <span className="button__badge">{props.itemsInCart}</span>
 
         </center>
       </div>
-    )
-  }
-}
+)
+
 const mapStateToProps = state => ({
   itemsInCart: state.cart.itemsInCart
 })

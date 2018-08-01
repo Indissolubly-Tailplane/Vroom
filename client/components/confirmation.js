@@ -1,15 +1,8 @@
-import React, {Component} from 'react'
-// import SingleCar from './SingleCar';
+import React from 'react'
 import Footer from './Footer'
 import {Link} from 'react-router-dom'
 
-export default class Confirmation extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-  render() {
-    return (
+const Confirmation = () => (
       <div>
         <center>
           <h3>Your Order Is Being Processed and Will Be Shipped Shortly</h3>
@@ -48,6 +41,6 @@ export default class Confirmation extends Component {
           <Footer />
         </div>
       </div>
-    )
-  }
-}
+)
+
+export default Confirmation;

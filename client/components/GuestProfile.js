@@ -3,13 +3,9 @@
   - carCard components
 */
 import React, {Component} from 'react'
-// import {} from '../store/car'
 import {connect} from 'react-redux'
 import OrderItem from './orderItem'
-import order, {fetchOrderByEmail, fetchAllOrders} from '../store/order'
-import {me} from '../store'
-// const queryString = require('query-string')
-import axios from 'axios'
+import {fetchOrderByEmail} from '../store/order'
 
 class GuestProfile extends Component {
   constructor(props) {
@@ -24,19 +20,13 @@ class GuestProfile extends Component {
 
   handleChange(evt) {
     this.setState({[evt.target.name]: evt.target.value})
-    console.log(this.state)
   }
 
   async handleSubmit(submitEvent) {
     submitEvent.preventDefault()
     const queryEmail = this.toQuery(this.state.userEmail)
-    console.log(queryEmail)
     const userOrders = await this.props.fetchOrderByEmail(queryEmail)
-    console.log(userOrders)
     this.setState({usersOrders: userOrders})
-    console.log(this.state)
-    // await this.props.addCampus(this.state)
-    // const campus = await this.props.fetchCampus()
   }
 
   toQuery(email) {

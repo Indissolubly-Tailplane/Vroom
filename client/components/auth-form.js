@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Image} from 'semantic-ui-react'
 import Footer from './Footer'
+import axios from 'axios'
+import {UpdateItemsInCart, fetchCart} from '../store/cart'
 
 /**
  * COMPONENT
@@ -57,10 +59,11 @@ const AuthForm = props => {
  *   can stay DRY with interfaces that are very similar to each other!
  */
 const mapLogin = state => {
+  console.log("STATE: ", state)
   return {
     name: 'login',
     displayName: 'Login',
-    error: state.user.error
+    error: state.user.error,
   }
 }
 
@@ -72,18 +75,23 @@ const mapSignup = state => {
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch =  (dispatch) => {
   return {
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
+      let loggedInUser = await dispatch(auth(email, password, formName))
       window.sessionStorage.clear()
-      dispatch(auth(email, password, formName))
+      console.log('LOGGED IN USER: ', loggedInUser)
+      dispatch(fetchCart(loggedInUser));
+
     }
   }
 }
+
+
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)

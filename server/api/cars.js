@@ -22,6 +22,7 @@ router.get('/:id', asyncHandler(async (req,res,next) => {
   res.json(car);
 }))
 
+
 router.post("/charge", async (req, res) => {
     let {status} = await stripe.charges.create({
       amount: req.body.purchaseTotal,
@@ -29,7 +30,6 @@ router.post("/charge", async (req, res) => {
       description: "An example charge",
       source: req.body.tokenId
     });
-    // ALSO SEND ORDER INFORMATION TO DB
     res.json({status});
 });
 
@@ -39,21 +39,5 @@ router.put('/:id', asyncHandler(async (req, res, next) => {
   await car.update({quantity: car.quantity -1})
   res.json(car);
 }))
-
-//get cars by user Id
-
-// router.get('/cart/:userId', asyncHandler(async(req, res, next) => {
-//   const userId = req.params.userId
-//   const carsByUser = await User.findAll({
-//     include: [{
-//       model: Car,
-//       through: {where: {userId : req.param.userId}},
-
-//     }]
-//   })
-
-//   res.send(carsByUser);
-// }))
-
 
 module.exports = router
