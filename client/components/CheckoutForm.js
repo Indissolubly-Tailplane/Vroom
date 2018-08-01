@@ -4,7 +4,6 @@ import React, {Component} from 'react';
 import {injectStripe, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement} from 'react-stripe-elements';
 import { connect } from 'react-redux';
 import {postOrderToDb, UpdateItemsInCart} from '../store/cart'
-// import { updateOrderedCars } from '../store/order'
 
 class CheckoutForm extends Component {
   constructor(props) {

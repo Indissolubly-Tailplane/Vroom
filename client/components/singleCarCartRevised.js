@@ -57,7 +57,6 @@ export class SingleCarCart extends Component {
             <div className="extra">
               <div className="ui red basic button" onClick={this.handleRemove}>
                 Remove
-                {/* <i className="right shop icon" /> */}
               </div>
             </div>
           </div>
