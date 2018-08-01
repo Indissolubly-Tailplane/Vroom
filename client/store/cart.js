@@ -24,8 +24,7 @@ export const postOrderToDb = (orderEmail,arrayOfCarIds) => async dispatch => {
     try {
         const {data} = await axios.post('/api/orders', {email: orderEmail})
         await Promise.all(arrayOfCarIds.map(carId =>  axios.post(`api/orders/update/${data.id}`,{carId:carId})))
-        let DONTUSE = await Promise.all(arrayOfCarIds.map(carId => axios.put(`/api/cars/${carId}`)))
-        return(DONTUSE)
+        await Promise.all(arrayOfCarIds.map(carId => axios.put(`/api/cars/${carId}`)))
     } catch (err) {
         console.log(err)
     }
