@@ -1,19 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 
-class Checkout extends Component {
-  render() {
-    return (
+export const Checkout = (props) => (
       <StripeProvider apiKey="pk_test_NIADJgaPnph0TGWHkcqwcW7V">
         <div >
           <Elements>
-            <CheckoutForm {...this.props} className="StripeElement"/>
+            <CheckoutForm {...props} className="StripeElement"/>
           </Elements>
         </div>
       </StripeProvider>
-    );
-  }
-}
+)
 
 export default Checkout;

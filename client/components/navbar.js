@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import {Menu} from 'semantic-ui-react'
 import CartNumber from './cartNumber'
-import {UpdateItemsInCart, postCartToDb} from '../store/cart'
+import {postCartToDb} from '../store/cart'
 
 const Navbar = ({handleClick, isLoggedIn, UpdateCart, isAdmin, userId}) => (
   <React.Fragment>
@@ -55,13 +55,11 @@ const Navbar = ({handleClick, isLoggedIn, UpdateCart, isAdmin, userId}) => (
             >
             Logout
             </a>
-            {/* <Link to="/Login">Logout</Link> */}
           </Menu.Item>
         )}
         <Menu.Item>
           <Link to="/Cart">
             <i className="shopping cart icon" />
-            {/* <span className="button__badge">{window.localStorage.length}</span> */}
             <CartNumber />
           </Link>
         </Menu.Item>
