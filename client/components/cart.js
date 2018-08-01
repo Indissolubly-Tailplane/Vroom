@@ -1,17 +1,9 @@
-/* We need...
-  - NavBar
-  - Single Car Cart Component
-  - Total
-  - Checkout Button
-*/
 import SingleCarCartRevised from './singleCarCartRevised'
 import Footer from './Footer'
 import {Link} from 'react-router-dom'
 import {updateTotal} from '../store/car'
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import SingleCar from './SingleCar';
 
 class Cart extends Component {
   constructor() {
@@ -26,7 +18,6 @@ class Cart extends Component {
 
   componentDidMount() {
     this.setState({cartItems: window.sessionStorage.length})
-    // convert price to Dollar Formar
     this.calculateTotal();
   }
 
@@ -48,17 +39,14 @@ class Cart extends Component {
   }
 
   parseStore = () => {
-    // this.setState({cartItems: window.sessionStorage.length})
     let cars = Object.entries(window.sessionStorage).map(
       car => JSON.parse(car[1]).id
     )
-    console.log(cars)
     return new Set(cars).size !== cars.length
   }
 
   render() {
     const canCheckout = this.parseStore()
-    console.log(canCheckout)
     const numberWithCommas = x => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }

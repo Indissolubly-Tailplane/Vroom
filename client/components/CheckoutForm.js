@@ -41,9 +41,7 @@ class CheckoutForm extends Component {
         if (response.ok) {
           this.setState({paymentSuccess: true})
           const arrayOfCarIds = this.getArrayOfCarsId();
-          console.log(arrayOfCarIds)
           let DONTUSE = await this.props.postOrderToDb(this.state.email, arrayOfCarIds);
-          console.log("AFTER POST ORDER TO DB IN CHECKOUT")
           window.sessionStorage.clear();
           this.props.UpdateItemsInCart();
           this.props.history.push('/confirmation')
@@ -61,7 +59,6 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    console.log('state', this.state);
     let elementStyles = {
       base: {
         color: '#fff',

@@ -1,6 +1,4 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import NavBar from './navbar'
+import React from 'react'
 import {connect} from 'react-redux'
 import Footer from './Footer'
 

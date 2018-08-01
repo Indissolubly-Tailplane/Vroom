@@ -82,10 +82,7 @@ const mapDispatch = dispatch => {
       dispatch(logout())
     },
     UpdateCart(userId) {
-      console.log("I RAN")
-      console.log("USER ID: ", userId)
       dispatch(postCartToDb(userId))
-      // dispatch(UpdateItemsInCart())
     }
   }
 }

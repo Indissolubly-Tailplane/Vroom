@@ -4,9 +4,6 @@ import {Link} from 'react-router-dom'
 import {Image} from 'semantic-ui-react'
 import {UpdateItemsInCart} from '../store/cart'
 
-/**
- * COMPONENT
- */
 class SingleCar extends Component {
   addToCar = () => {
     window.sessionStorage.setItem(

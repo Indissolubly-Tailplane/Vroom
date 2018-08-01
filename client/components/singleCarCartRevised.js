@@ -1,22 +1,8 @@
-/* We need...
-  - Car name
-  - Image
-  - Info
-  - Quantity
-  - Edit
-  - Remove
-*/
-
 import React, {Component} from 'react'
 import propTypes from 'prop-types' // typeCheck incomming props (raect error handling)
-import Cart from './Cart'
-import {Image} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {UpdateItemsInCart} from '../store/cart'
 
-/**
- * COMPONENT
- */
 export class SingleCarCart extends Component {
   constructor() {
     super()

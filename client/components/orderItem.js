@@ -1,17 +1,7 @@
-/* We need...
-  - Car name
-  - Image
-  - Info
-  - Quantity
-  - Edit
-  - Remove
-*/
-
 import React from 'react'
 import {Header, Image, Table, Icon} from 'semantic-ui-react'
 
 const OrderItem = props => {
-  console.log('orderItem: ', props)
   const numberWithCommas = x => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
