@@ -18,6 +18,7 @@ class AdminAllOrders extends Component {
     await this.props.updateUserOrder(id, {
       shipped: data
     })
+    await this.props.fetchAllOrders()
   }
 
   toQuery(email) {

@@ -25,16 +25,19 @@ router.get(
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    const allOrders = await Order.findAll({
-      include: [
-        {
-          model: Car
-        }
-      ]
-    })
-    res.json(allOrders)
-  })
-)
+    if (req.user !== undefined && req.user.dataValues.adminStatus === true){
+      const allOrders = await Order.findAll({
+        include: [
+          {
+            model: Car
+          }
+        ]
+      })
+      res.json(allOrders)
+    } else {
+      res.send('You are not authorized!')
+    }
+  }))
 
 //get order by Id with carsInOrder
 router.get(

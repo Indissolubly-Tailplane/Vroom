@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fetchCar} from '../store/car'
 import {connect} from 'react-redux'
-import {Grid, Image} from 'semantic-ui-react'
+import {Grid, Image, Container, Header} from 'semantic-ui-react'
 import {UpdateItemsInCart} from '../store/cart'
 
 class CarCard extends Component {
@@ -34,25 +34,27 @@ class CarCard extends Component {
           />
         </Grid.Column>
         <Grid.Column>
-          <div className="CarCard">
-            <div className="content">
-              <div id="carName">
-                {singleCar.make} {singleCar.model}
+          <Container fluid>
+            <div className="CarCard">
+              <div className="content">
+                <Header as="h2" color="black" textAlign="left">
+                  {singleCar.make} {singleCar.model}
+                </Header>
+                <p id="carYear">{singleCar.year}</p>
+                {singleCar.limitedEdition === true ? (
+                  <p id="carDescription">Limited Edition</p>
+                ) : null}{' '}
+                <p id="carDescription">{singleCar.description}</p>
+                <p id="carDescription">
+                  Starting at ${numberWithCommas(singleCar.price)}
+                </p>
+                <p id="carDescription">{singleCar.quantity} Left in Stock!</p>
+                <button onClick={this.addToCar} id="carButton">
+                  Add to Cart
+                </button>
               </div>
-              <div id="carYear">{singleCar.year}</div>
-              {singleCar.limitedEdition === true ? (
-                <div id="carYear">Limited Edition</div>
-              ) : null}{' '}
-              <div id="carDescription">{singleCar.description}</div>
-              <div id="carPrice">
-                Starting at ${numberWithCommas(singleCar.price)}
-              </div>
-              <div id="carQuantity">{singleCar.quantity} Left in Stock!</div>
-              <button id="carButton" onClick={this.addToCar}>
-                Add to Cart
-              </button>
             </div>
-          </div>
+          </Container>
         </Grid.Column>
       </Grid>
     )

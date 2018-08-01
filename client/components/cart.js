@@ -33,9 +33,9 @@ class Cart extends Component {
       JSON.parse(car[1])
     )
     for (let i = 0; i < cars.length; i++) {
-      totalPrice += cars[i].price;
+      totalPrice += cars[i].price
     }
-    this.props.updateTotal(totalPrice);
+    this.props.updateTotal(totalPrice)
   }
 
   parseStore = () => {
