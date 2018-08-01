@@ -29,19 +29,6 @@ class Cart extends Component {
     // convert price to Dollar Formar
     this.calculateTotal()
   }
-  // let totalPrice = 0
-  // let cars = Object.entries(window.sessionStorage).map(car =>
-  //   JSON.parse(car[1])
-  // )
-  // for (let i = 0; i < cars.length; i++) {
-  //   totalPrice += cars[i].price;
-  //   // this.props.updateTotal(totalPrice);
-  // }
-  // console.log('TOTAL PRICE:', totalPrice)
-  // this.props.updateTotal(totalPrice);
-  // console.log('CART TOTAL FROM PROPS:', this.props.cartTotal)
-  // // this.setState({cartTotal: totalPrice})
-  // // TOTAL PRICE IS WHAT WE NEED TO PASS TO STRIPE CHECKOUT
 
   handleRemoveInCart = evt => {
     this.setState({
