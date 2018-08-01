@@ -41,7 +41,7 @@ class CheckoutForm extends Component {
         if (response.ok) {
           this.setState({paymentSuccess: true})
           const arrayOfCarIds = this.getArrayOfCarsId();
-          let DONTUSE = await this.props.postOrderToDb(this.state.email, arrayOfCarIds);
+          this.props.postOrderToDb(this.state.email, arrayOfCarIds);
           window.sessionStorage.clear();
           this.props.UpdateItemsInCart();
           this.props.history.push('/confirmation')
